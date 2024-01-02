@@ -4338,7 +4338,6 @@ test.describe("Full Booking", async () => {
     await expect(page.locator("//button[text()='Pre-Book Now']")).toBeDisabled()
 
    // await page.locator("//button[text()='Place Booking']").click()
-    await page.pause()
     await page.locator("//a[contains(text(),'Dashboard')]").click()
     await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Book']").click()
