@@ -92,7 +92,7 @@ screenshot : "off"
 // trace:"on"
   },
 
-reporter:[["html",{open:"on-failure"}]],
+reporter:[["html",{open:"never"}]],
   /* Configure projects for major browsers */
   projects: [
     {
