@@ -2078,7 +2078,7 @@ test.describe("Full Booking", async () => {
       console.log('Pop-up is not visible.');
     }
   })
-  test.only("cargo details", async ({ page, adminpg }) => { //delete bin icon need to check, required spelling mistake
+  test("cargo details", async ({ page, adminpg }) => { //delete bin icon need to check, required spelling mistake
    // await page.locator("//button[text()='Place Booking']").click()
     await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Book']").click()
