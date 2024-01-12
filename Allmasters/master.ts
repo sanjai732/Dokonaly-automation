@@ -1291,7 +1291,7 @@ test.describe("user management", async () => {
     
     await page.locator("//button[text()=' Back']").click()
  
-    await page.pause()
+    //await page.pause()
     await page.locator("(//div[@data-colindex='5'])[1]/*[1]").click()
     await adminpg.pop_up_yes()
     await expect(page.locator("//div[text()='Status Updated Successfully']")).toBeVisible()
@@ -2985,7 +2985,7 @@ test.describe.skip("Cfs Management", async () => {
   })
 // after create password
   test("check that edit functionality and save as inactive", async({adminpg, page, baseURL, loginpg})=>{
-    await page.pause()
+    //await page.pause()
     await adminpg.cfsmanagement()
     await page.locator("//input[@placeholder='Search CFS by Name, Gateway, Destination']").fill("mumbai")
     await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
@@ -3346,7 +3346,7 @@ test.describe("Holiday", async () => {
     await adminpg.invaliddate_toast()
     await page.reload()
 
-    await page.pause()
+    //await page.pause()
     await adminpg.holiday_upload("data-files/wrong holiday name.xls")
     await adminpg.file_upload_toast()
     await adminpg.submit_button_file()
@@ -3471,7 +3471,7 @@ test.describe("Schedule", async () => {
     await page.locator("(//button[@aria-label='Choose date'])[3]").click()
     await page.locator("//button[@title='Next month']").click()
     await page.waitForTimeout(2000)
-    await page.locator("//button[text()='12']").click()
+    await page.locator("//button[text()='16']").click()
 
     await page.waitForTimeout(1000)
     await page.locator("(//button[@aria-label='Choose date'])[3]").click()
@@ -3495,7 +3495,7 @@ test.describe("Schedule", async () => {
     await page.locator("(//button[@aria-label='Choose date'])[3]").click()
     await page.locator("//button[@title='Next month']").click()
     await page.waitForTimeout(2000)
-    await page.locator("//button[text()='22']").click()
+    await page.locator("//button[text()='24']").click()
 
     await adminpg.sch_oricfsname("mumbai")
     await adminpg.sch_oricfsbranch("branch 1")
@@ -3808,7 +3808,7 @@ test.describe("Full Booking", async () => {
   test.beforeEach(async ({ page, baseURL, loginpg }) => {
     test.setTimeout(340000)
     await page.goto(`${baseURL}`)
-    await loginpg.emailID("ravi@doko.com")
+    await loginpg.emailID("sanjai.s@allmasters.ai")
     await loginpg.password("Doko@2023")
     await loginpg.sign_in()
     await page.waitForTimeout(2000)
@@ -3822,8 +3822,9 @@ test.describe("Full Booking", async () => {
       console.log('Pop-up is not visible.');
     }
   })
-  test("cargo details", async ({ page, adminpg }) => { //delete bin icon need to check, required spelling mistake
-   // await page.locator("//button[text()='Place Booking']").click()
+  test("cargo details", async ({ page, adminpg }) => { 
+    await page.locator("//a[contains(text(),'AllMasters')]").click()
+    await page.locator("//button[text()='Place Booking']").click()
     await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Book']").click()
     await page.waitForTimeout(2000)
@@ -3957,7 +3958,8 @@ test.describe("Full Booking", async () => {
   })
   test("checking on each package values on different metrics with Stackable", async ({ page, adminpg }) => {
     test.setTimeout(180000);
-    //await page.locator("//button[text()='Place Booking']").click()
+    await page.locator("//a[contains(text(),'AllMasters')]").click()
+    await page.locator("//button[text()='Place Booking']").click()
     await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Book']").click()
     await page.waitForTimeout(2000)
@@ -4313,7 +4315,8 @@ test.describe("Full Booking", async () => {
   })
   test("checking on each package values on different metrics with Non-Stackable", async ({ page, adminpg }) => {
     test.setTimeout(180000);
-   // await page.locator("//button[text()='Place Booking']").click()
+    await page.locator("//a[contains(text(),'AllMasters')]").click()
+    await page.locator("//button[text()='Place Booking']").click()
     await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Book']").click()
     await page.waitForTimeout(2000)
@@ -4625,8 +4628,8 @@ test.describe("Full Booking", async () => {
   })
   test("checking on each package values on different metrics with Stackable + Adding Number of packages", async ({ page, adminpg }) => {
     test.setTimeout(180000);
-    //await page.pause()
-   // await page.locator("//button[text()='Place Booking']").click()
+    await page.locator("//a[contains(text(),'AllMasters')]").click()
+    await page.locator("//button[text()='Place Booking']").click()
     await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Book']").click()
     await page.waitForTimeout(2000)
@@ -5347,7 +5350,8 @@ test.describe("Full Booking", async () => {
   test("checking on each package values on different metrics with Non-Stackable + Adding Number of packages", async ({ page, adminpg }) => {
     test.setTimeout(180000);
   
-   // await page.locator("//button[text()='Place Booking']").click()
+    await page.locator("//a[contains(text(),'AllMasters')]").click()
+    await page.locator("//button[text()='Place Booking']").click()
     await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Book']").click()
     await page.waitForTimeout(2000)
@@ -5984,7 +5988,8 @@ test.describe("Full Booking", async () => {
   })
   test("CBM and weight allowance", async ({ page, adminpg }) => {
     test.setTimeout(180000);
-    //await page.locator("//button[text()='Place Booking']").click()
+    await page.locator("//a[contains(text(),'AllMasters')]").click()
+    await page.locator("//button[text()='Place Booking']").click()
     await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Book']").click()
     await page.waitForTimeout(2000)
@@ -6082,7 +6087,7 @@ test.describe("Full Booking", async () => {
     await expect(page.locator("//button[text()='Pre-Book Now']")).toBeDisabled()
 
    // await page.locator("//button[text()='Place Booking']").click()
-    await page.pause()
+    //await page.pause()
     await page.locator("//a[contains(text(),'Dashboard')]").click()
     await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Book']").click()
@@ -6102,7 +6107,8 @@ test.describe("Full Booking", async () => {
   test("All forwarder details and validations", async ({ page, adminpg, loginpg }) => {
 
       test.setTimeout(180000);
-    // await page.locator("//button[text()='Place Booking']").click()
+      await page.locator("//a[contains(text(),'AllMasters')]").click()
+      await page.locator("//button[text()='Place Booking']").click()
       await page.locator("(//h1[text()='AEJEA'])[1]").click()
       await page.locator("//button[text()='Continue to Book']").click()
       await page.waitForTimeout(2000)
@@ -6800,6 +6806,8 @@ test.describe("Full Booking", async () => {
 
   }) 
   test("Check with dashboard and my bookings after done one booking ", async({page, adminpg })=>{
+    await page.locator("//a[contains(text(),'AllMasters')]").click()
+    await page.locator("//button[text()='Place Booking']").click()
     await expect(page.locator("//a[contains(text(),'AllMasters')]")).toBeVisible()
     await expect(page.locator("//h1[text()='Overview']")).toBeVisible()
     await expect(page.locator("//h5[text()='Active Orders']")).toBeVisible()
@@ -7441,8 +7449,9 @@ await page.waitForTimeout(2000)
   })
   test("verify that can able to do pre-booking", async ({ adminpg, page, loginpg }) => {
     test.setTimeout(180000);
-    //await page.locator("//button[text()='Place Booking']").click()
-    await page.locator("(//h1[text()='AEJEA'])[2]").click()              /// change
+    await page.locator("//a[contains(text(),'AllMasters')]").click()
+    await page.locator("//button[text()='Place Booking']").click()
+    await page.locator("(//h1[text()='AEJEA'])[1]").click()              /// change
     await page.locator("//button[text()='Continue to Book']").click()
     await page.waitForTimeout(2000)
     await adminpg.package_0(data.Pallets)
@@ -7632,7 +7641,7 @@ test.describe.skip("Place order", async()=>{
     await page.locator("//select[@id='originCountry']").selectOption("india")     
     await page.locator("//button[text()='Search']").click()
     await page.locator("//div[contains(@class,'swiper-slide swiper-slide-active')]").click()
-    await page.locator("(//h1[text()='AEJEA'])[2]").click()
+    await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Place Order']").click()
  
      await page.locator("//span[contains(@class,'MuiTypography-root MuiTypography-body1')]").click()
@@ -7771,7 +7780,7 @@ test.describe.skip("Place order", async()=>{
     await page.locator("//select[@id='originCountry']").selectOption("india")     
     await page.locator("//button[text()='Search']").click()
     await page.locator("//div[contains(@class,'swiper-slide swiper-slide-active')]").click()
-    await page.locator("(//h1[text()='AEJEA'])[2]").click()
+    await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Place Order']").click()
      await page.waitForTimeout(2000)
  
@@ -8133,7 +8142,7 @@ test.describe.skip("Place order", async()=>{
    await page.locator("//select[@id='originCountry']").selectOption("india")     
    await page.locator("//button[text()='Search']").click()
    await page.locator("//div[contains(@class,'swiper-slide swiper-slide-active')]").click()
-   await page.locator("(//h1[text()='AEJEA'])[2]").click()
+   await page.locator("(//h1[text()='AEJEA'])[1]").click()
    await page.locator("//button[text()='Continue to Place Order']").click()
      await page.waitForTimeout(2000)
  
@@ -8452,7 +8461,7 @@ test.describe.skip("Place order", async()=>{
    await page.locator("//select[@id='originCountry']").selectOption("india")     
    await page.locator("//button[text()='Search']").click()
    await page.locator("//div[contains(@class,'swiper-slide swiper-slide-active')]").click()
-   await page.locator("(//h1[text()='AEJEA'])[2]").click()
+   await page.locator("(//h1[text()='AEJEA'])[1]").click()
    await page.locator("//button[text()='Continue to Place Order']").click()
      await page.waitForTimeout(2000)
      //1
@@ -9179,7 +9188,7 @@ test.describe.skip("Place order", async()=>{
     await page.locator("//select[@id='originCountry']").selectOption("india")     
     await page.locator("//button[text()='Search']").click()
     await page.locator("//div[contains(@class,'swiper-slide swiper-slide-active')]").click()
-    await page.locator("(//h1[text()='AEJEA'])[2]").click()
+    await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Place Order']").click()
      await page.waitForTimeout(2000)
      //1
@@ -9818,7 +9827,7 @@ test.describe.skip("Place order", async()=>{
      await page.locator("//select[@id='originCountry']").selectOption("india")     
      await page.locator("//button[text()='Search']").click()
      await page.locator("//div[contains(@class,'swiper-slide swiper-slide-active')]").click()
-     await page.locator("(//h1[text()='AEJEA'])[2]").click()
+     await page.locator("(//h1[text()='AEJEA'])[1]").click()
      await page.locator("//button[text()='Continue to Place Order']").click()
      await page.waitForTimeout(2000)
  
@@ -9946,7 +9955,7 @@ test.describe.skip("Place order", async()=>{
     await expect(page.locator("//label[text()='Origin Country']")).toBeVisible()
     await expect(page.locator("//button[text()='Search']")).toBeVisible()
 
-    await page.pause()
+   // await page.pause()
     await page.locator("//select[@id='pod']").click()   
     //await page.locator("#pod > option:nth-child(2)").click()
     await page.locator("AEJEA").click()
@@ -10065,7 +10074,7 @@ test.describe.skip("Place order", async()=>{
      await page.locator("//select[@id='originCountry']").selectOption("india")     
      await page.locator("//button[text()='Search']").click()
      await page.locator("//div[contains(@class,'swiper-slide swiper-slide-active')]").click()
-     await page.locator("(//h1[text()='AEJEA'])[2]").click()
+     await page.locator("(//h1[text()='AEJEA'])[1]").click()
      await page.locator("//button[text()='Continue to Place Order']").click()
       await page.locator("//input[@placeholder='Booking Party Email ID']").fill(data.mailid[a])
       await page.locator("//button[text()='Place Order']").click()
@@ -10077,7 +10086,7 @@ test.describe.skip("Place order", async()=>{
 
 test.describe("Milestone", async () => {
   test.beforeEach(async ({ page, baseURL, loginpg, adminpg }) => {
-    test.setTimeout(480000)
+    test.setTimeout(4800000)
     var loop
     await page.goto(`${baseURL}`)
     await loginpg.emailID("sanjai.s@allmasters.ai")
@@ -10137,8 +10146,8 @@ test.describe("Milestone", async () => {
   })
   test("Milestone with basic Flow and PDF check", async ({ loginpg, adminpg, page, baseURL }) => {
 
-     test.setTimeout(360000);
-     await page.pause()
+     test.setTimeout(480000);
+     
      await loginpg.logout_mile()
 
     // SO RELEASED
@@ -10368,8 +10377,8 @@ test.describe("Milestone", async () => {
   
   }) //toast msg, sometimes landing page
   test("Milestone with amendment and upload all document ", async ({ loginpg, adminpg, page}) => {
-    test.setTimeout(360000);
-    await page.pause()
+    test.setTimeout(480000);
+    
     await loginpg.logout_mile()
 
    // SO RELEASED
@@ -10538,7 +10547,7 @@ test.describe("Milestone", async () => {
    await page.close()
   })
   test("Milestone with cargo not received ", async ({ loginpg, adminpg, page}) => {
-    test.setTimeout(360000);
+    test.setTimeout(480000);
     await loginpg.logout_mile()
 
    // SO RELEASED
@@ -10575,8 +10584,8 @@ await loginpg.logout_mile_OT()
    await page.close()
   })
   test("Check with validation msg in Milestone ", async ({ loginpg, adminpg, page}) => {
-    test.setTimeout(360000);
-    await page.pause()
+    test.setTimeout(480000);
+    
     await loginpg.logout_mile()
 
    // SO RELEASED
@@ -11896,7 +11905,7 @@ await page.locator("//label[text()='Week Number']/following::input").fill("7")
 
 test.describe("My account for place order", async () => {
   test.beforeEach(async ({ page, baseURL, loginpg }) => {
-    test.setTimeout(3600000)
+    test.setTimeout(180000)
     await page.goto(`${baseURL}`)
     await loginpg.select_type(data.type1)
     await loginpg.emailID("sanjai.s@allmasters.ai") //change
@@ -11957,7 +11966,7 @@ test.describe("My account for place order", async () => {
     await expect(page.locator("//input[@id='email']")).toHaveValue("sanjai.s@allmasters.ai")// change
     await expect(page.locator("//input[@id='Company Name']")).toHaveValue("chittoor comp")// change
 
-    await page.pause()
+   
     await expect(page.locator("//h5[text()='No Sub Users']")).toBeVisible()
     await page.locator("//button[text()='Add Member']").click()
     await page.locator("//button[@type='submit']").click()
@@ -12145,7 +12154,7 @@ test.describe("My account for place order", async () => {
 
 test.describe("My account for place booking", async () => {
   test.beforeEach(async ({ page, baseURL, loginpg }) => {
-    test.setTimeout(3600000)
+    test.setTimeout(180000)
     await page.goto(`${baseURL}`)
     await loginpg.select_type(data.type1)
     await loginpg.emailID("sanjai.s@allmasters.ai") //change
@@ -12163,7 +12172,8 @@ test.describe("My account for place booking", async () => {
   })
   test("verify able to change the details and switch the port ", async ({ adminpg, page, loginpg }) => {
 
-    //await page.locator("//button[text()='Place Booking']").click()
+    await page.locator("//a[contains(text(),'AllMasters')]").click()
+    await page.locator("//button[text()='Place Booking']").click()
     await adminpg.ff_name()
     await adminpg.my_account()
     await adminpg.edit_details()
@@ -12817,7 +12827,7 @@ test.describe("My account for place booking", async () => {
 test.describe("change password",async()=>{
   test("check change password on each internals login credentails", async({page, adminpg, loginpg, baseURL})=>{
 
-    test.setTimeout(3600000)
+    test.setTimeout(180000)
     await page.goto(`${baseURL}`)
     
     for(let pass=0; pass<=3; pass++){
@@ -12937,7 +12947,7 @@ test.describe("change password",async()=>{
 
 test.describe("Feedback", async() => {
   test.beforeEach(async ({ page, baseURL, loginpg }) => {
-    test.setTimeout(3600000)
+    test.setTimeout(180000)
     await page.goto(`${baseURL}`)
     await loginpg.select_type(data.type3)
     await loginpg.emailID("admin@ams.com") //change
@@ -13067,7 +13077,7 @@ test.describe("Audit Logs", async()=>{
 
 test.describe("About", async() =>{
   test.beforeEach(async ({ page, baseURL, loginpg }) => {
-    test.setTimeout(3600000)
+    test.setTimeout(180000)
     await page.goto(`${baseURL}`)
     await loginpg.select_type(data.type3)
     await loginpg.emailID("admin@ams.com") //change

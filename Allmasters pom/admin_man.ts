@@ -1271,7 +1271,8 @@ async fflogin_mile (){
        else {
        console.log('Pop-up is not visible by FF.');
        }
-
+       await this.page.locator("//a[contains(text(),'AllMasters')]").click()
+       await this.page.locator("//button[text()='Place Booking']").click()
        await this.page.click("//a[contains(text(),'Shipments')]")
        await this.page.click("//a[contains(text(),'Bookings')]")
        await this.page.locator("(//button[@type='button'])[2]").click()
@@ -1414,7 +1415,8 @@ async fftwologin_mile (){
        else {
        console.log('Pop-up is not visible by FF.');
        }
-
+       await this.page.locator("//a[contains(text(),'AllMasters')]").click()
+       await this.page.locator("//button[text()='Place Booking']").click()
        await this.page.click("//a[contains(text(),'Shipments')]")
        await this.page.click("//a[contains(text(),'Bookings')]")
        await this.page.locator("(//button[@type='button'])[2]").click()
@@ -1558,7 +1560,8 @@ async ffthreelogin_mile (){
        else {
        console.log('Pop-up is not visible by FF.');
        }
-
+       await this.page.locator("//a[contains(text(),'AllMasters')]").click()
+       await this.page.locator("//button[text()='Place Booking']").click()
        await this.page.click("//a[contains(text(),'Shipments')]")
        await this.page.click("//a[contains(text(),'Bookings')]")
        await this.page.locator("(//button[@type='button'])[2]").click()
@@ -1702,7 +1705,8 @@ async fffourlogin_mile (){
        else {
        console.log('Pop-up is not visible by FF.');
        }
-
+       await this.page.locator("//a[contains(text(),'AllMasters')]").click()
+       await this.page.locator("//button[text()='Place Booking']").click()
        await this.page.click("//a[contains(text(),'Shipments')]")
        await this.page.click("//a[contains(text(),'Bookings')]")
        await this.page.locator("(//button[@type='button'])[2]").click()
@@ -1721,9 +1725,7 @@ async fffourlogin_mile (){
 
        await this.page.locator("//button[text()='Apply Filters']").click()  
        await this.page.locator("(//button[text()='View Details '])[4]").click()
-
-
-    
+  
 }
 async otfourlogin_mile (){
        const type = await this.page.locator("//select[@type='number']")
