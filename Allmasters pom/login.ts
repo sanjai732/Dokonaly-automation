@@ -3,7 +3,7 @@ import {Page, expect} from "@playwright/test";
     constructor(public page:Page){}
 // LOGIN 
     async emailID(id:string){
-        await this.page.locator("//input[@id='InputEmail1']").type(id)
+        await this.page.locator("//input[@id='InputEmail1']").fill(id)
     }
     async select_type(tp:string){
        const type = await this.page.locator("//select[@type='number']")
@@ -31,10 +31,11 @@ import {Page, expect} from "@playwright/test";
         await this.page.locator("//button[@id='Signin']").click()
     }
     async logout_dd(){
-        await this.page.waitForNavigation({waitUntil:"networkidle"})
+       // await this.page.waitForNavigation({waitUntil:"networkidle"})
         await expect(this.page.locator("//a[text()='AllMasters']")).toBeVisible()
-        await this.page.locator("//a[@class='dropdown-toggle nav-link']").click()
+        await this.page.locator("(//a[@class='dropdown-toggle nav-link'])[2]").click()
         await this.page.locator("//a[contains(text(),'Logout')]").click()
+        await expect(this.page.locator("//h5[text()='Welcome back !']")).toBeVisible()
     }
 
     async logout_mile_OT(){
@@ -42,8 +43,11 @@ import {Page, expect} from "@playwright/test";
         await this.page.locator("//li[text()='Sign Out']").click()
     }
     async logout_mile(){
-        
-        await this.page.locator("//a[@class='dropdown-toggle nav-link']").click()
+        await this.page.locator("(//a[@class='dropdown-toggle nav-link'])[2]").click()
+        await this.page.locator("//a[contains(text(),'Logout')]").click()
+    }
+    async logout_orimile(){
+        await this.page.locator("//a[@class='dropdown-toggle nav-link']//p[1]").click()
         await this.page.locator("//a[contains(text(),'Logout')]").click()
     }
     async email_toast(){

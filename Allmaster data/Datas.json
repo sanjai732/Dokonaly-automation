@@ -1,5 +1,5 @@
 {
-    "mailID_ff":"sanjai.s@dokonaly.com",
+    "mailID_ff":"sanjai.s@allmasters.ai",
     "InvmailID_ff":"sanjay.s@dokonaly.com",
     "InvmailID_ff1":"snajidd.com",
     "password_ff":"Doko@2023",
@@ -75,7 +75,7 @@
     "cfsbranch":"branch 1",
     "cfsbranch_vel":"Velacherry",
     "name":"subham",
-    "cfs_email":"balaji.r@dokonaly.com",
+    "cfs_email":"subham.sidhartha@dokonaly.com",
     "cfs_addsamplemail":"rrr@rajamouli.com",
     "cfs_Address":"subham address",
     "mobilecode_number":"911234567899", 
@@ -134,7 +134,7 @@
     "ct1":"12:30",
     "ct2":"2:00",
 
-    "scheduleID":"INNSA/AEJEA/43-01",
+    "scheduleID":"INNSA/AEJEA/24-1-01",
 
     "ocfs":"50000",
     "odoc":"3400",
@@ -200,5 +200,7 @@
 
     "need to add":["2200.1","2200.2","2200.3","2200.4"],
     "cred":["obt@ams.com","rdt@ams.com","admin@ams.com","ot@ams.com"],
-    "loc":["//li[text()='All']","//li[text()='Service Feedback']","//li[text()='Product Feedback']"]
-}
+    "loc":["","",""],
+    "rates":["-0.1","2.1","0.32","0"],   
+    "mailid":["SANJAI.S@ALLMASTERS.AI","SANJAI.s@allmasters.ai","sanjai.S@allmasters,ai","Sanjai.S@Allmasters.ai"]
+}   

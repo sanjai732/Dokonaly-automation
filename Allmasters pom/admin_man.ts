@@ -1257,12 +1257,10 @@ export default class{
 async fflogin_mile (){
        const type = await this.page.locator("//select[@type='number']")
        await type.selectOption("I am a Customer")
-       await this.page.locator("//input[@id='InputEmail1']").type("sanjai.s@dokonaly.com")
-       await this.page.locator("//input[@id='InputPassword1']").type("Doko@2023")
+       await this.page.locator("//input[@id='InputEmail1']").fill("sanjai.s@allmasters.ai")
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
        // await this.page.click("//button[@id='Signin']")
        await this.page.keyboard.press('Enter')
-
-
        await this.page.waitForTimeout(2000);
        const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
          
@@ -1274,23 +1272,35 @@ async fflogin_mile (){
        console.log('Pop-up is not visible by FF.');
        }
 
-       await this.page.click("//a[text()='My Bookings']")
-       await this.page.locator("//input[@placeholder='Search Bookings']").fill("AMBQA-102-23-0073")   // will change 
-       await this.page.locator("(//button[text()='View Details '])[1]").click()     // will change
+       await this.page.click("//a[contains(text(),'Shipments')]")
+       await this.page.click("//a[contains(text(),'Bookings')]")
+       await this.page.locator("(//button[@type='button'])[2]").click()
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("innsa")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
+
+       await this.page.locator("(//input[@role='combobox'])[2]").fill("aejea")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
+
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()            //change
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View Details '])[1]").click()
 
 
     
 }
-
  async otlogin_mile (){
        const type = await this.page.locator("//select[@type='number']")
        await type.selectOption("I am an Administrator")
-       await this.page.locator("//input[@id='InputEmail1']").type("ot@ams.com")
-       await this.page.locator("//input[@id='InputPassword1']").type("Doko@2023")
+       await this.page.locator("//input[@id='InputEmail1']").fill("ot@ams.com")
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
        // await this.page.click("//button[@id='Signin']")
        await this.page.keyboard.press('Enter')
-
-     
        await this.page.waitForTimeout(2000);
        const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
          
@@ -1301,22 +1311,33 @@ async fflogin_mile (){
        else {
        console.log('Pop-up is not visible by OT.');
        }
-       await this.page.locator("//input[@placeholder='Search Schedule ID']").type("INNSA/AEJEA/35-01") // will change
-       await this.page.click("//button[text()='View']")
-       await this.page.locator("//input[@placeholder='Search Company Name']").type("sanjai pvt ltd")   // will change
+       await this.page.click("//a[contains(text(),'Booking')]")
+       await this.page.locator("(//button[@type='button'])[2]").click()   
+       await this.page.locator("//div[text()='All']").click()
+       await this.page.locator("//li[text()='Inactive']").click()
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("innsa")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
 
-       await this.page.click("//button[text()='Booked']")
-       await this.page.click("(//button[text()='View Info'])[5]")   //will change
+       await this.page.locator("(//input[@role='combobox'])[2]").fill("aejea")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()               //change
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View'])[1]").click()       //change
+       await this.page.locator("(//button[text()='View Info'])[1]").click()  //change
     
 }
 async oripartner_mile(){
        const type = await this.page.locator("//select[@type='number']")
        await type.selectOption("I am a Partner")
-       await this.page.locator("//input[@id='InputEmail1']").type("chennai@ocfs.com")
-       await this.page.locator("//input[@id='InputPassword1']").type("Doko@2023")
+       await this.page.locator("//input[@id='InputEmail1']").fill("subham@dokonaly.com") //change
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
        await this.page.keyboard.press('Enter')
-
-       
        await this.page.waitForTimeout(2000);
        const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
        
@@ -1327,14 +1348,26 @@ async oripartner_mile(){
        else {
         console.log('Pop-up is not visible by partner.');
        }
-       await this.page.click("(//button[text()='View'])[8]")                   // will change
-       await this.page.click("(//button[text()='View Info'])[5]")              // will change
+       await this.page.locator("(//button[@type='button'])[2]").click()   
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("aejea")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');          // will change
+
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View'])[1]").click()
+       await this.page.locator("(//button[text()='View Info'])[1]").click()
+
 }
 async destpartner_mile(){
        const type = await this.page.locator("//select[@type='number']")
        await type.selectOption("I am a Partner")
-       await this.page.locator("//input[@id='InputEmail1']").type("uae@dcfs.com")
-       await this.page.locator("//input[@id='InputPassword1']").type("Doko@2023")
+       await this.page.locator("//input[@id='InputEmail1']").fill("balaji.rr@dokonaly.com  ")
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
        // await this.page.click("//button[@id='Signin']")
        await this.page.keyboard.press('Enter')
 
@@ -1348,11 +1381,453 @@ async destpartner_mile(){
        else {
         console.log('Pop-up is not visible.');
        }
-       await this.page.click("(//button[text()='View'])[8]")                      // will change
-       await this.page.click("(//button[text()='View Info'])[5]")                 // will change
+       await this.page.locator("(//button[@type='button'])[2]").click()   
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("innsa")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');          // will change
+
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View'])[1]").click()
+       await this.page.locator("(//button[text()='View Info'])[1]").click()
+
 }
      
-     
+async fftwologin_mile (){
+       const type = await this.page.locator("//select[@type='number']")
+       await type.selectOption("I am a Customer")
+       await this.page.locator("//input[@id='InputEmail1']").fill("sanjai.s@allmasters.ai")
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
+       await this.page.click("//button[@id='Signin']")
+       //await this.page.keyboard.press('Enter')
+       await this.page.waitForTimeout(2000);
+       const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
+         
+       if(listen){
+        console.log('Pop-up is visible by FF.');
+        await this.page.click("//button[text()='Yes']")
+       }
+       else {
+       console.log('Pop-up is not visible by FF.');
+       }
+
+       await this.page.click("//a[contains(text(),'Shipments')]")
+       await this.page.click("//a[contains(text(),'Bookings')]")
+       await this.page.locator("(//button[@type='button'])[2]").click()
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("innsa")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
+
+       await this.page.locator("(//input[@role='combobox'])[2]").fill("aejea")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
+
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()            //change
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View Details '])[2]").click()
+
+
+    
+}
+ async ottwologin_mile (){
+       const type = await this.page.locator("//select[@type='number']")
+       await type.selectOption("I am an Administrator")
+       await this.page.locator("//input[@id='InputEmail1']").fill("ot@ams.com")
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
+       await this.page.click("//button[@id='Signin']")
+       //await this.page.keyboard.press('Enter')
+       await this.page.waitForTimeout(2000);
+       const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
+         
+       if(listen){
+        console.log('Pop-up is visible by OT.');
+        await this.page.click("//button[text()='Yes']")
+       }
+       else {
+       console.log('Pop-up is not visible by OT.');
+       }
+       await this.page.click("//a[contains(text(),'Booking')]")
+       await this.page.locator("(//button[@type='button'])[2]").click()   
+       await this.page.locator("//div[text()='All']").click()
+       await this.page.locator("//li[text()='Inactive']").click()
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("innsa")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
+
+       await this.page.locator("(//input[@role='combobox'])[2]").fill("aejea")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()               //change
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View'])[1]").click()       //change
+       await this.page.locator("(//button[text()='View Info'])[2]").click()  //change
+    
+}
+async oritwopartner_mile(){
+       const type = await this.page.locator("//select[@type='number']")
+       await type.selectOption("I am a Partner")
+       await this.page.locator("//input[@id='InputEmail1']").fill("subham@dokonaly.com") //change
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
+       await this.page.click("//button[@id='Signin']")
+       //await this.page.keyboard.press('Enter')
+       await this.page.waitForTimeout(2000);
+       const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
+       
+       if(listen){
+        console.log('Pop-up is visible by partner.');
+       await this.page.click("//button[text()='Yes']")
+       }
+       else {
+        console.log('Pop-up is not visible by partner.');
+       }
+       await this.page.locator("(//button[@type='button'])[2]").click()   
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("aejea")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');          // will change
+
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View'])[1]").click()
+       await this.page.locator("(//button[text()='View Info'])[2]").click()
+
+}
+async desttwopartner_mile(){
+       const type = await this.page.locator("//select[@type='number']")
+       await type.selectOption("I am a Partner")
+       await this.page.locator("//input[@id='InputEmail1']").fill("balaji.rr@dokonaly.com  ")
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
+       await this.page.click("//button[@id='Signin']")
+       //await this.page.keyboard.press('Enter')
+
+       await this.page.waitForTimeout(2000);
+       const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
+       
+       if(listen){
+        console.log('Pop-up is visible.');
+       await this.page.click("//button[text()='Yes']")
+       }
+       else {
+        console.log('Pop-up is not visible.');
+       }
+       await this.page.locator("(//button[@type='button'])[2]").click()   
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("innsa")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');          // will change
+
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View'])[1]").click()
+       await this.page.locator("(//button[text()='View Info'])[2]").click()
+
+}
+
+async ffthreelogin_mile (){
+       const type = await this.page.locator("//select[@type='number']")
+       await type.selectOption("I am a Customer")
+       await this.page.locator("//input[@id='InputEmail1']").fill("sanjai.s@allmasters.ai")
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
+       await this.page.click("//button[@id='Signin']")
+       //await this.page.keyboard.press('Enter')
+       await this.page.waitForTimeout(2000);
+       const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
+         
+       if(listen){
+        console.log('Pop-up is visible by FF.');
+        await this.page.click("//button[text()='Yes']")
+       }
+       else {
+       console.log('Pop-up is not visible by FF.');
+       }
+
+       await this.page.click("//a[contains(text(),'Shipments')]")
+       await this.page.click("//a[contains(text(),'Bookings')]")
+       await this.page.locator("(//button[@type='button'])[2]").click()
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("innsa")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
+
+       await this.page.locator("(//input[@role='combobox'])[2]").fill("aejea")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
+
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()            //change
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View Details '])[3]").click()
+
+
+    
+}
+ async otthreelogin_mile (){
+       const type = await this.page.locator("//select[@type='number']")
+       await type.selectOption("I am an Administrator")
+       await this.page.locator("//input[@id='InputEmail1']").fill("ot@ams.com")
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
+       await this.page.click("//button[@id='Signin']")
+       //await this.page.keyboard.press('Enter')
+       await this.page.waitForTimeout(2000);
+       const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
+         
+       if(listen){
+        console.log('Pop-up is visible by OT.');
+        await this.page.click("//button[text()='Yes']")
+       }
+       else {
+       console.log('Pop-up is not visible by OT.');
+       }
+       await this.page.click("//a[contains(text(),'Booking')]")
+       await this.page.locator("(//button[@type='button'])[2]").click()   
+       await this.page.locator("//div[text()='All']").click()
+       await this.page.locator("//li[text()='Inactive']").click()
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("innsa")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
+
+       await this.page.locator("(//input[@role='combobox'])[2]").fill("aejea")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()               //change
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View'])[1]").click()       //change
+       await this.page.locator("(//button[text()='View Info'])[3]").click()  //change
+    
+}
+async orithreepartner_mile(){
+       const type = await this.page.locator("//select[@type='number']")
+       await type.selectOption("I am a Partner")
+       await this.page.locator("//input[@id='InputEmail1']").fill("subham@dokonaly.com") //change
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
+       await this.page.click("//button[@id='Signin']")
+       //await this.page.keyboard.press('Enter')
+       await this.page.waitForTimeout(2000);
+       const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
+       
+       if(listen){
+        console.log('Pop-up is visible by partner.');
+       await this.page.click("//button[text()='Yes']")
+       }
+       else {
+        console.log('Pop-up is not visible by partner.');
+       }
+       await this.page.locator("(//button[@type='button'])[2]").click()   
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("aejea")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');          // will change
+
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View'])[1]").click()
+       await this.page.locator("(//button[text()='View Info'])[3]").click()
+
+}
+async destthreepartner_mile(){
+       const type = await this.page.locator("//select[@type='number']")
+       await type.selectOption("I am a Partner")
+       await this.page.locator("//input[@id='InputEmail1']").fill("balaji.rr@dokonaly.com  ")
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
+       await this.page.click("//button[@id='Signin']")
+       //await this.page.keyboard.press('Enter')
+
+       await this.page.waitForTimeout(2000);
+       const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
+       
+       if(listen){
+        console.log('Pop-up is visible.');
+       await this.page.click("//button[text()='Yes']")
+       }
+       else {
+        console.log('Pop-up is not visible.');
+       }
+       await this.page.locator("(//button[@type='button'])[2]").click()   
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("innsa")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');          // will change
+
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View'])[1]").click()
+       await this.page.locator("(//button[text()='View Info'])[3]").click()
+
+}
+
+async fffourlogin_mile (){
+       const type = await this.page.locator("//select[@type='number']")
+       await type.selectOption("I am a Customer")
+       await this.page.locator("//input[@id='InputEmail1']").fill("sanjai.s@allmasters.ai")
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
+       await this.page.click("//button[@id='Signin']")
+       //await this.page.keyboard.press('Enter')
+       await this.page.waitForTimeout(2000);
+       const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
+         
+       if(listen){
+        console.log('Pop-up is visible by FF.');
+        await this.page.click("//button[text()='Yes']")
+       }
+       else {
+       console.log('Pop-up is not visible by FF.');
+       }
+
+       await this.page.click("//a[contains(text(),'Shipments')]")
+       await this.page.click("//a[contains(text(),'Bookings')]")
+       await this.page.locator("(//button[@type='button'])[2]").click()
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("innsa")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
+
+       await this.page.locator("(//input[@role='combobox'])[2]").fill("aejea")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
+
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()            //change
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View Details '])[4]").click()
+
+
+    
+}
+async otfourlogin_mile (){
+       const type = await this.page.locator("//select[@type='number']")
+       await type.selectOption("I am an Administrator")
+       await this.page.locator("//input[@id='InputEmail1']").fill("ot@ams.com")
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
+       await this.page.click("//button[@id='Signin']")
+       //await this.page.keyboard.press('Enter')
+       await this.page.waitForTimeout(2000);
+       const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
+         
+       if(listen){
+        console.log('Pop-up is visible by OT.');
+        await this.page.click("//button[text()='Yes']")
+       }
+       else {
+       console.log('Pop-up is not visible by OT.');
+       }
+       await this.page.click("//a[contains(text(),'Booking')]")
+       await this.page.locator("(//button[@type='button'])[2]").click()   
+       await this.page.locator("//div[text()='All']").click()
+       await this.page.locator("//li[text()='Inactive']").click()
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("innsa")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
+
+       await this.page.locator("(//input[@role='combobox'])[2]").fill("aejea")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()               //change
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View'])[1]").click()       //change
+       await this.page.locator("(//button[text()='View Info'])[4]").click()  //change
+    
+}
+async orifourpartner_mile(){
+       const type = await this.page.locator("//select[@type='number']")
+       await type.selectOption("I am a Partner")
+       await this.page.locator("//input[@id='InputEmail1']").fill("subham@dokonaly.com") //change
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
+       await this.page.click("//button[@id='Signin']")
+       //await this.page.keyboard.press('Enter')
+       await this.page.waitForTimeout(2000);
+       const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
+       
+       if(listen){
+        console.log('Pop-up is visible by partner.');
+       await this.page.click("//button[text()='Yes']")
+       }
+       else {
+        console.log('Pop-up is not visible by partner.');
+       }
+       await this.page.locator("(//button[@type='button'])[2]").click()   
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("aejea")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');          // will change
+
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View'])[1]").click()
+       await this.page.locator("(//button[text()='View Info'])[4]").click()
+
+}
+async destfourpartner_mile(){
+       const type = await this.page.locator("//select[@type='number']")
+       await type.selectOption("I am a Partner")
+       await this.page.locator("//input[@id='InputEmail1']").fill("balaji.rr@dokonaly.com  ")
+       await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
+       await this.page.click("//button[@id='Signin']")
+       //await this.page.keyboard.press('Enter')
+
+       await this.page.waitForTimeout(2000);
+       const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
+       
+       if(listen){
+        console.log('Pop-up is visible.');
+       await this.page.click("//button[text()='Yes']")
+       }
+       else {
+        console.log('Pop-up is not visible.');
+       }
+       await this.page.locator("(//button[@type='button'])[2]").click()   
+       await this.page.locator("(//input[@role='combobox'])[1]").fill("innsa")
+       await this.page.keyboard.press('ArrowDown');
+       await this.page.keyboard.press('Enter');          // will change
+
+       await this.page.locator("(//button[@aria-label='Choose date'])[1]").click()
+       await this.page.locator("//button[@title='Next month']").click()
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("//button[text()='16']").click()
+
+       await this.page.locator("//button[text()='Apply Filters']").click()  
+       await this.page.locator("(//button[text()='View'])[1]").click()
+       await this.page.locator("(//button[text()='View Info'])[4]").click()
+
+}
      async fileupload(){
        await this.page.locator("//input[@id='file']").setInputFiles("data-files/Gst.pdf")
     //   await this.page.click("(//div[@class='_filediv_vtv8j_105']//span)[2]")         /////// file view
@@ -1444,5 +1919,482 @@ async origin_forwarder_title_assert(){
        await expect(this.page.locator("//label[text()='Driver Name']")).toBeVisible()
 
 }
+async assert_user(){
+       await expect(this.page.locator("//h3[text()='Team Details']")).toBeVisible()
+    await expect(this.page.locator("//p[text()='Country']")).toBeVisible()
+    await expect(this.page.locator("//p[text()='State']")).toBeVisible()
+    await expect(this.page.locator("//p[text()='City']")).toBeVisible()
+    await expect(this.page.locator("//p[text()='PAN']")).toBeVisible()
+    await expect(this.page.locator("//p[text()='Trader License']")).toBeVisible()
+    await expect(this.page.locator("//p[text()='Documents']")).toBeVisible()
+    await expect(this.page.locator("//p[text()='DUNS Number :']")).toBeVisible()
+    await expect(this.page.locator("//div[text()='FULL NAME']")).toBeVisible()
+    await expect(this.page.locator("//div[text()='MOBILE']")).toBeVisible()
+    await expect(this.page.locator("//div[text()='EMAIL']")).toBeVisible()
+    await expect(this.page.locator("//div[text()='Status']")).toBeVisible()
+    await expect(this.page.locator("//h4[text()='chittoor comp']")).toBeVisible()
+    await expect(this.page.locator("//span[text()='chittoor group']")).toBeVisible()
+    await expect(this.page.locator("//p[text()='india']")).toBeVisible()   //change
+    await expect(this.page.locator("//p[text()='andhra pradesh']")).toBeVisible()//change
+    await expect(this.page.locator("//p[text()='chittoor']")).toBeVisible()//change
+    await expect(this.page.locator("//p[text()='EWWSA4342Q']")).toBeVisible()
+    await expect(this.page.locator("//p[text()='Tal029']")).toBeVisible()
+    await expect(this.page.locator("//a[contains(text(),'22EWWSA4342QAZ3')]")).toBeVisible()
+    await expect(this.page.locator("//a[contains(text(),'BL file')]")).toBeVisible()
+    await expect(this.page.locator("//p[text()='DUN0039']")).toBeVisible()
+    await expect(this.page.locator("//div[@title='Lames']")).toBeVisible()
+    await expect(this.page.locator("//div[@title='8857399921']")).toBeVisible()
+    await expect(this.page.locator("//div[@title='ravi@doko.com']")).toBeVisible()
+    await expect(this.page.locator("//span[text()='Inactive']")).toBeVisible()
+}
+
+async new_reg_assert(){
+ 
+    await expect(this.page.locator("//h3[text()='User Management']")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor comp")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITToor comp")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor COMP")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittOOR COmp")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITTOOR COMP")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittoor comp")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   CHITToor comp")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittoor COMP")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittOOR COmp")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   CHITTOOR COMP")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("LAMES")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("lames")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("LAMes")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("lAMEs")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("laMES")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   LAMES")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   lames")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   LAMes")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   lAMEs")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   laMES")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   8857399921")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("8857399921  ")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("8857390921  ")
+    await expect(this.page.locator("//div[text()='No rows']")).toBeVisible()
+
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("SANJAI.S@ALLMASTERS.AI")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.s@allmasters.ai")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("SANjai.s@allmasters.ai")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.S@ALLmasters.ai")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.s@allmastERS.AI")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   SANJAI.S@ALLMASTERS.AI")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   sanjai.s@allmasters.ai")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   SANjai.s@allmasters.ai")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("    sanjai.S@ALLmasters.ai")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("    sanjai.s@allmastERS.AI")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+}
+
+async new_pend_assert(){
+       
+       
+       await expect(this.page.locator("//h3[text()='User Management']")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITToor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittOOR COmp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITTOOR COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittoor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   CHITToor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittoor COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittOOR COmp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   CHITTOOR COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+   
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("LAMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("lames")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("LAMes")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("lAMEs")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("laMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   LAMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   lames")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   LAMes")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   lAMEs")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   laMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+   
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   8857399921")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("8857399921  ")
+    await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("8857390921  ")
+    await expect(this.page.locator("//div[text()='No rows']")).toBeVisible()
+   
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("SANJAI.S@ALLMASTERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("SANjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.S@ALLmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.s@allmastERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   SANJAI.S@ALLMASTERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   sanjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   SANjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("    sanjai.S@ALLmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("    sanjai.s@allmastERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+}
+
+   async new_revalideOBTADMIN_assert(){
+       
+      
+       await expect(this.page.locator("//h3[text()='User Management']")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITToor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittOOR COmp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITTOOR COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittoor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   CHITToor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittoor COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittOOR COmp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   CHITTOOR COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+   
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("LAMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("lames")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("LAMes")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("lAMEs")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("laMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   LAMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   lames")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   LAMes")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   lAMEs")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   laMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+   
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   8857399921")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("8857399921  ")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("8857390921  ")
+       await expect(this.page.locator("//div[text()='No rows']")).toBeVisible()
+   
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("SANJAI.S@ALLMASTERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("SANjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.S@ALLmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.s@allmastERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   SANJAI.S@ALLMASTERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   sanjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   SANjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("    sanjai.S@ALLmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("    sanjai.s@allmastERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+   }
+
+   async new_rejected_assert(){
+       
+     
+       await expect(this.page.locator("//h3[text()='User Management']")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITToor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittOOR COmp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITTOOR COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittoor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   CHITToor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittoor COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittOOR COmp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   CHITTOOR COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+   
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("LAMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("lames")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("LAMes")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("lAMEs")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("laMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   LAMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   lames")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   LAMes")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   lAMEs")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   laMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+   
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   8857399921")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("8857399921  ")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("8857390921  ")
+       await expect(this.page.locator("//div[text()='No rows']")).toBeVisible()
+   
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("SANJAI.S@ALLMASTERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("SANjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.S@ALLmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.s@allmastERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   SANJAI.S@ALLMASTERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   sanjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   SANjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("    sanjai.S@ALLmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("    sanjai.s@allmastERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+   }
+
+   async new_OBTrej_assert(){
+       
+       
+       await expect(this.page.locator("//h3[text()='User Management']")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITToor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittOOR COmp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITTOOR COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittoor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   CHITToor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittoor COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittOOR COmp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   CHITTOOR COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+   
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("LAMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("lames")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("LAMes")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("lAMEs")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("laMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   LAMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   lames")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   LAMes")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   lAMEs")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   laMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+   
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   8857399921")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("8857399921  ")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("8857390921  ")
+       await expect(this.page.locator("//div[text()='No rows']")).toBeVisible()
+   
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("SANJAI.S@ALLMASTERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("SANjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.S@ALLmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.s@allmastERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   SANJAI.S@ALLMASTERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   sanjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   SANjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("    sanjai.S@ALLmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("    sanjai.s@allmastERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+   }
+
+   async new_Deactive_assert(){
+       
+      
+       await expect(this.page.locator("//h3[text()='User Management']")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITToor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittOOR COmp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITTOOR COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittoor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   CHITToor comp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittoor COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   chittOOR COmp")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   CHITTOOR COMP")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+   
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("LAMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("lames")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("LAMes")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("lAMEs")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("laMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   LAMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   lames")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   LAMes")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   lAMEs")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   laMES")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+   
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   8857399921")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("8857399921  ")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("8857390921  ")
+       await expect(this.page.locator("//div[text()='No rows']")).toBeVisible()
+   
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("SANJAI.S@ALLMASTERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("SANjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.S@ALLmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("sanjai.s@allmastERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   SANJAI.S@ALLMASTERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   sanjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("   SANjai.s@allmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("    sanjai.S@ALLmasters.ai")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+       await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("    sanjai.s@allmastERS.AI")
+       await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+   }
 
 }
