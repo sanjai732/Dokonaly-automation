@@ -99,20 +99,21 @@ screenshot : "off"
 reporter:[["html",{open:"never"}]],
   /* Configure projects for major browsers */
   projects: [
+    // {
+    //   name: 'chromium',
+    //   use: {
+    //   //  ...devices['Desktop Chrome'],
+    //     viewport: null,
+    //   },
+    // },
+
     {
-      name: 'chromium',
+      name: 'firefox',
       use: {
-      //  ...devices['Desktop Chrome'],
-        viewport: null,
+        ...devices['Desktop Firefox'],
+        viewport:null
       },
     },
-
-  //   // {
-  //   //   name: 'firefox',
-  //   //   use: {
-  //   //     ...devices['Desktop Firefox'],
-  //   //   },
-  //   // },
 
     // {
     //   name: 'webkit',
