@@ -85,6 +85,10 @@ const config: PlaywrightTestConfig = {
  expect:{timeout:6000},
   use: {
     headless:false,
+    launchOptions: {
+      // 1
+      args: ["--start-maximized"],
+    },
 //baseURL:"http://dev.cn.dokonaly.com/",
 baseURL:"http://qa.ams.ai/user/of/dashboard",
 video : "on",
@@ -98,8 +102,8 @@ reporter:[["html",{open:"never"}]],
     {
       name: 'chromium',
       use: {
-        ...devices['Desktop Chrome'],
-        viewport:{width:1366,height:649}
+      //  ...devices['Desktop Chrome'],
+        viewport: null,
       },
     },
 
