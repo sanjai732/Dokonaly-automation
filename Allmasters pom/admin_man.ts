@@ -649,10 +649,14 @@ export default class{
               await this.page.locator("//button[@aria-label='Choose date']").click()
        }
        async holiday_date_choose(){
-              await this.page.locator("//button[text()='28']").click()
+              await this.page.locator("//button[@title='Next month']").click()
+              await this.page.waitForTimeout(1000)
+              await this.page.locator("//button[text()='24']").click()
        }
        async holiday_date_choose1(){
-              await this.page.locator("//button[text()='27']").click()
+              await this.page.locator("//button[@title='Next month']").click()
+              await this.page.waitForTimeout(1000)
+              await this.page.locator("//button[text()='23']").click()
        }
        async asser_holiday(){
               await expect(this.page.locator("div[data-colindex='1']")).toBeVisible()
@@ -1946,13 +1950,13 @@ async assert_user(){
     await expect(this.page.locator("//p[text()='DUN0039']")).toBeVisible()
     await expect(this.page.locator("//div[@title='Lames']")).toBeVisible()
     await expect(this.page.locator("//div[@title='8857399921']")).toBeVisible()
-    await expect(this.page.locator("//div[@title='ravi@doko.com']")).toBeVisible()
+    await expect(this.page.locator("//div[text()='sanjai.s@allmasters.ai']")).toBeVisible()
     await expect(this.page.locator("//span[text()='Inactive']")).toBeVisible()
 }
 
 async new_reg_assert(){
  
-    await expect(this.page.locator("//h3[text()='User Management']")).toBeVisible()
+    await expect(this.page.locator("//h3[text()='New Users']")).toBeVisible()
     await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor comp")
     await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
     await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITToor comp")
@@ -2026,8 +2030,7 @@ async new_reg_assert(){
 
 async new_pend_assert(){
        
-       
-       await expect(this.page.locator("//h3[text()='User Management']")).toBeVisible()
+       await expect(this.page.locator("//h3[text()='Pending Users']")).toBeVisible()
        await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor comp")
        await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
        await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITToor comp")
@@ -2101,8 +2104,7 @@ async new_pend_assert(){
 
    async new_revalideOBTADMIN_assert(){
        
-      
-       await expect(this.page.locator("//h3[text()='User Management']")).toBeVisible()
+       await expect(this.page.locator("//h3[text()='Re-Validated Users']")).toBeVisible()
        await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor comp")
        await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
        await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITToor comp")
@@ -2176,7 +2178,6 @@ async new_pend_assert(){
 
    async new_rejected_assert(){
        
-     
        await expect(this.page.locator("//h3[text()='User Management']")).toBeVisible()
        await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor comp")
        await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
@@ -2250,9 +2251,8 @@ async new_pend_assert(){
    }
 
    async new_OBTrej_assert(){
-       
-       
-       await expect(this.page.locator("//h3[text()='User Management']")).toBeVisible()
+          
+       await expect(this.page.locator("//h3[text()='OBT-Rejected Users']")).toBeVisible()
        await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor comp")
        await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
        await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITToor comp")
@@ -2326,8 +2326,7 @@ async new_pend_assert(){
 
    async new_Deactive_assert(){
        
-      
-       await expect(this.page.locator("//h3[text()='User Management']")).toBeVisible()
+       await expect(this.page.locator("//h3[text()='De-Activated Users']")).toBeVisible()
        await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("chittoor comp")
        await expect(this.page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
        await this.page.locator("//input[@placeholder='Search by Company Name, Full Name, Email Id, Mobile Number']").fill("CHITToor comp")

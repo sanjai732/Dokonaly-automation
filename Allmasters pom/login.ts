@@ -33,7 +33,7 @@ import {Page, expect} from "@playwright/test";
     async logout_dd(){
        // await this.page.waitForNavigation({waitUntil:"networkidle"})
         await expect(this.page.locator("//a[text()='AllMasters']")).toBeVisible()
-        await this.page.locator("(//a[@class='dropdown-toggle nav-link'])[2]").click()
+        await this.page.locator("(//a[@class='dropdown-toggle nav-link'])[1]").click()
         await this.page.locator("//a[contains(text(),'Logout')]").click()
         await expect(this.page.locator("//h5[text()='Welcome back !']")).toBeVisible()
     }

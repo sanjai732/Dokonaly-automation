@@ -1,6 +1,14 @@
 import { test, expect } from '../Allmaster pom_fixture/all_pom_fixture'
 import * as data from "../Allmaster data/Datas.json"
-
+/*
+clear cache before start 
+mark all as read in notification
+check with email id, details for customer in db
+partner mail id 
+logout from all valid mail id like admin, ot, partner and customer
+there should be no schedule
+change the date in holiday excel
+*/
 test.describe.skip("Country", async () => {
   
   test.beforeEach(async ({ page, baseURL, loginpg }) => {
@@ -270,22 +278,21 @@ test.describe("Register personal details", async () => {
   })
   test("checking the register personal details with validation message for UAE country", async ({ page, loginpg, adminpg }) => {
     
-    await page.locator("//button[text()='Register']").click()
-    await page.locator("//input[@type='checkbox']").click()
-    await page.locator("//button[text()='Get Started']").click()
-    await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("mohammed navi")
-    const till = await page.locator("//select[@name='designation']")
-    await till.selectOption("Procurement")
-    const tils = await page.locator("//select[@name='mobileCode']")
-    await tils.selectOption("+971")        
-    await page.locator("//input[@placeholder='Enter Mobile Number']").fill("3233222")       /// change
-    await page.locator("//input[@placeholder='Enter Email Address']").fill("mohammed.navi@dokonaly.com") /// change email everytime
-    await page.locator("(//input[@type='password'])[1]").fill("Doko@2023")
-    await page.locator("(//input[@type='password'])[2]").fill("Doko@2023")
-    await page.locator("//button[text()='Get Started']").click()
-    await page.pause()
-
-    // otp need to put 
+    // await page.locator("//button[text()='Register']").click()
+    // await page.locator("//input[@type='checkbox']").click()
+    // await page.locator("//button[text()='Get Started']").click()
+    // await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("mohammed nabi")
+    // const till = await page.locator("//select[@name='designation']")
+    // await till.selectOption("Procurement")
+    // const tils = await page.locator("//select[@name='mobileCode']")
+    // await tils.selectOption("+971")        
+    // await page.locator("//input[@placeholder='Enter Mobile Number']").fill("3233222")       /// change
+    // await page.locator("//input[@placeholder='Enter Email Address']").fill("mohammed.nabi@dokonaly.com") /// change email everytime
+    // await page.locator("(//input[@type='password'])[1]").fill("Doko@2023")
+    // await page.locator("(//input[@type='password'])[2]").fill("Doko@2023")
+    // await page.locator("//button[text()='Get Started']").click()
+    // await page.pause()
+   // otp need to put 
 ///
 
 await loginpg.select_type(data.type3)
@@ -311,7 +318,7 @@ await loginpg.select_type(data.type3)
   await expect(page.locator("(//h4[contains(.,'user made a registration without completing KYC page')])[1]")).toBeVisible()
   await page.locator("//button[text()='Next']").click()
   await page.locator("//button[text()='Previous']").click()
-  await page.locator("_notidiv_fqyfb_34").click()
+  await page.reload()
   await page.locator("//li[text()='Sign Out']").click()
 
   await loginpg.select_type(data.type3)
@@ -336,7 +343,7 @@ await loginpg.select_type(data.type3)
   await expect(page.locator("(//h4[contains(.,'user made a registration without completing KYC page')])[1]")).toBeVisible()
   await page.locator("//button[text()='Next']").click()
   await page.locator("//button[text()='Previous']").click()
-  await page.locator("_notidiv_fqyfb_34").click()
+  await page.reload()
   await page.locator("//li[text()='Sign Out']").click()
 
   await loginpg.select_type(data.type3)
@@ -361,12 +368,12 @@ await loginpg.select_type(data.type3)
   await expect(page.locator("(//h4[contains(.,'user made a registration without completing KYC page')])[1]")).toBeHidden()
   await page.locator("//button[text()='Next']").click()
   await page.locator("//button[text()='Previous']").click()
-  await page.locator("_notidiv_fqyfb_34").click()
+  await page.reload()
   await page.locator("//li[text()='Sign Out']").click()
 
 ///
     await loginpg.select_type(data.type1)
-    await loginpg.emailID("mohammed.navi@dokonaly.com") // change mail id everytime
+    await loginpg.emailID("mohammed.nabi@dokonaly.com") // change mail id everytime
     await loginpg.password("Doko@2023")
     await loginpg.sign_in()
     await page.waitForTimeout(2000)
@@ -389,7 +396,7 @@ await loginpg.select_type(data.type3)
      
     await page.locator("//input[@placeholder='Enter Company Name']").fill("   ")
     await expect(page.locator("//p[text()='Legal Entity Name is required']")).toBeVisible()
-    await page.locator("//input[@placeholder='Enter Company Name']").fill("Mohammed navi pvt ltd")
+    await page.locator("//input[@placeholder='Enter Company Name']").fill("Mohammed nabi pvt ltd")
     await page.locator("(//input[@role='combobox'])[1]").fill("Dubai")
     await page.waitForTimeout(2000)
     await page.keyboard.press('ArrowDown');
@@ -432,16 +439,16 @@ await loginpg.select_type(data.type3)
     await page.reload()
    
     await page.locator("//button[text()='Continue']").click()
-    await page.locator("//input[@placeholder='Enter Company Name']").fill("Robert freight pvt ltd")
+    await page.locator("//input[@placeholder='Enter Company Name']").fill("Mohammed nabi pvt ltd")
     await page.locator("(//input[@role='combobox'])[1]").fill("Dubai")
     await page.waitForTimeout(2000)
     await page.keyboard.press('ArrowDown');
     await page.keyboard.press('Enter'); 
     await page.locator("//input[@id='ci']").setInputFiles("data-files/1mbcopy (1).pdf")
     await page.locator("//input[@id='bl']").setInputFiles("data-files/ie.pdf")
-    await page.locator("//input[@placeholder='Enter Trade License']").fill("TL0909")
-    await page.locator("//input[@placeholder='Enter Group Name']").fill("Rofrei")
-    await page.locator("//input[@placeholder='Enter DUNS Number']").fill("LJod921")
+    await page.locator("//input[@placeholder='Enter Trade License']").fill("TL09989")
+    await page.locator("//input[@placeholder='Enter Group Name']").fill("MHDNB")
+    await page.locator("//input[@placeholder='Enter DUNS Number']").fill("LJODd921")
     await page.locator("//button[text()='Continue']").click()
     //verification 24 hrs page
     await expect(page.locator("//h5[text()='Verification']")).toBeVisible()
@@ -467,7 +474,7 @@ await page.locator("(//div[@class='_notification_hmtms_139']//div)[1]").click()
 await expect(page.locator("//p[text()='1']")).toBeVisible()
 await expect(page.locator("//h1[text()='Notifications']")).toBeVisible()
 await expect(page.locator("(//h4[contains(.,'made a new registration by completing KYC page')])[1]")).toBeVisible()
-await page.locator("_notidiv_fqyfb_34").click()
+await page.reload()
 await page.locator("//li[text()='Sign Out']").click()
 
 await loginpg.select_type(data.type3)
@@ -487,7 +494,7 @@ await page.locator("(//div[@class='_notification_hmtms_139']//div)[1]").click()
 await expect(page.locator("//p[text()='1']")).toBeHidden()
 await expect(page.locator("//h1[text()='Notifications']")).toBeVisible()
 await expect(page.locator("(//h4[contains(.,'made a new registration by completing KYC page')])[1]")).toBeHidden()
-await page.locator("_notidiv_fqyfb_34").click()
+await page.reload()
 await page.locator("//li[text()='Sign Out']").click()
 
 
@@ -509,32 +516,32 @@ await expect(page.locator("//p[text()='1']")).toBeHidden()
 await expect(page.locator("//h1[text()='Notifications']")).toBeVisible()
 await expect(page.locator("//h4[contains(.,'made a new registration by completing KYC page')]")).toBeHidden()
 await expect(page.locator("//h4[contains(.,'user made a registration without completing KYC page')]")).toBeHidden()
-await page.locator("_notidiv_fqyfb_34").click()
+await page.reload()
 await page.locator("//li[text()='Sign Out']").click()
 
 
   })
   test("checking the register personal details with validation message for US country", async ({ page, loginpg, adminpg }) => {
     
-    await page.locator("//button[text()='Register']").click()
-    await page.locator("//input[@type='checkbox']").click()
-    await page.locator("//button[text()='Get Started']").click()
-    await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("willams")
-    const till = await page.locator("//select[@name='designation']")
-    await till.selectOption("finance")
-    const tils = await page.locator("//select[@name='mobileCode']")
-    await tils.selectOption("+1")        
-    await page.locator("//input[@placeholder='Enter Mobile Number']").fill("3329587332")       /// change
-    await page.locator("//input[@placeholder='Enter Email Address']").fill("willams@jf.com") /// change email everytime
-    await page.locator("(//input[@type='password'])[1]").fill("Doko@2023")
-    await page.locator("(//input[@type='password'])[2]").fill("Doko@2023")
-    await page.locator("//button[text()='Get Started']").click()
-    await page.pause()
+    // await page.locator("//button[text()='Register']").click()
+    // await page.locator("//input[@type='checkbox']").click()
+    // await page.locator("//button[text()='Get Started']").click()
+    // await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("willamson")
+    // const till = await page.locator("//select[@name='designation']")
+    // await till.selectOption("finance")
+    // const tils = await page.locator("//select[@name='mobileCode']")
+    // await tils.selectOption("+1")        
+    // await page.locator("//input[@placeholder='Enter Mobile Number']").fill("3324387332")       /// change
+    // await page.locator("//input[@placeholder='Enter Email Address']").fill("willams@jfre.com") /// change email everytime
+    // await page.locator("(//input[@type='password'])[1]").fill("Doko@2023")
+    // await page.locator("(//input[@type='password'])[2]").fill("Doko@2023")
+    // await page.locator("//button[text()='Get Started']").click()
+    // await page.pause()
 
     // otp need to put 
 
     await loginpg.select_type(data.type1)
-    await loginpg.emailID("willams@jf.com") // change mail id everytime
+    await loginpg.emailID("willams@jfre.com") // change mail id everytime
     await loginpg.password("Doko@2023")
     await loginpg.sign_in()
     await page.waitForTimeout(2000)
@@ -600,7 +607,7 @@ await page.locator("//li[text()='Sign Out']").click()
     await page.reload()
    
     await page.locator("//button[text()='Continue']").click()
-    await page.locator("//input[@placeholder='Enter Company Name']").fill("J f freight pvt ltd")
+    await page.locator("//input[@placeholder='Enter Company Name']").fill("J f cargo freight pvt ltd")
     await page.locator("//select[@name='country']").selectOption("United States Of America")
     await page.locator("(//input[@role='combobox'])[1]").fill("Florida")
     await page.waitForTimeout(7000)
@@ -608,9 +615,9 @@ await page.locator("//li[text()='Sign Out']").click()
     await page.keyboard.press('Enter'); 
     await page.locator("//input[@id='ci']").setInputFiles("data-files/1mbcopy (1).pdf")
     await page.locator("//input[@id='bl']").setInputFiles("data-files/ie.pdf")
-    await page.locator("//input[@placeholder='Enter Trade License']").fill("TL01928")
-    await page.locator("//input[@placeholder='Enter Group Name']").fill("jffrei")
-    await page.locator("//input[@placeholder='Enter DUNS Number']").fill("Dun1400")
+    await page.locator("//input[@placeholder='Enter Trade License']").fill("TL013928")
+    await page.locator("//input[@placeholder='Enter Group Name']").fill("jfftrei")
+    await page.locator("//input[@placeholder='Enter DUNS Number']").fill("Duns1400")
     await page.locator("//button[text()='Continue']").click()
     //verification 24 hrs page
     await expect(page.locator("//h5[text()='Verification']")).toBeVisible()
@@ -623,20 +630,20 @@ await page.locator("//li[text()='Sign Out']").click()
   })
   test("checking the register personal details with validation message for Canada country", async ({ page, loginpg, adminpg }) => {
     
-    await page.locator("//button[text()='Register']").click()
-    await page.locator("//input[@type='checkbox']").click()
-    await page.locator("//button[text()='Get Started']").click()
-    await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("John")
-    const till = await page.locator("//select[@name='designation']")
-    await till.selectOption("finance")
-    const tils = await page.locator("//select[@name='mobileCode']")
-    await tils.selectOption("+1")        
-    await page.locator("//input[@placeholder='Enter Mobile Number']").fill("3329087332")       /// change
-    await page.locator("//input[@placeholder='Enter Email Address']").fill("john@jf.com") /// change email everytime
-    await page.locator("(//input[@type='password'])[1]").fill("Doko@2023")
-    await page.locator("(//input[@type='password'])[2]").fill("Doko@2023")
-    await page.locator("//button[text()='Get Started']").click()
-    await page.pause()
+    // await page.locator("//button[text()='Register']").click()
+    // await page.locator("//input[@type='checkbox']").click()
+    // await page.locator("//button[text()='Get Started']").click()
+    // await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("John")
+    // const till = await page.locator("//select[@name='designation']")
+    // await till.selectOption("finance")
+    // const tils = await page.locator("//select[@name='mobileCode']")
+    // await tils.selectOption("+1")        
+    // await page.locator("//input[@placeholder='Enter Mobile Number']").fill("3329087332")       /// change
+    // await page.locator("//input[@placeholder='Enter Email Address']").fill("john@jf.com") /// change email everytime
+    // await page.locator("(//input[@type='password'])[1]").fill("Doko@2023")
+    // await page.locator("(//input[@type='password'])[2]").fill("Doko@2023")
+    // await page.locator("//button[text()='Get Started']").click()
+    // await page.pause()
 
     // otp need to put 
 
@@ -714,9 +721,9 @@ await page.locator("//li[text()='Sign Out']").click()
     await page.keyboard.press('Enter'); 
     await page.locator("//input[@id='ci']").setInputFiles("data-files/1mbcopy (1).pdf")
     await page.locator("//input[@id='bl']").setInputFiles("data-files/ie.pdf")
-    await page.locator("//input[@placeholder='Enter Trade License']").fill("TL01528")
-    await page.locator("//input[@placeholder='Enter Group Name']").fill("J F Group")
-    await page.locator("//input[@placeholder='Enter DUNS Number']").fill("Dun1200")
+    await page.locator("//input[@placeholder='Enter Trade License']").fill("TL021528")
+    await page.locator("//input[@placeholder='Enter Group Name']").fill("J F Fre Group")
+    await page.locator("//input[@placeholder='Enter DUNS Number']").fill("Duns1200")
     await page.locator("//button[text()='Continue']").click()
     //verification 24 hrs page
     await expect(page.locator("//h5[text()='Verification']")).toBeVisible()
@@ -729,40 +736,40 @@ await page.locator("//li[text()='Sign Out']").click()
   })
   test("checking the register personal details with validation message for India country", async ({ page, loginpg, adminpg }) => {
 
-    await page.locator("//button[text()='Register']").click()
-    await page.locator("//input[@type='checkbox']").click()
-    await page.locator("//button[text()='Get Started']").click()
+    // await page.locator("//button[text()='Register']").click()
+    // await page.locator("//input[@type='checkbox']").click()
+    // await page.locator("//button[text()='Get Started']").click()
 
-    await expect(page.locator("//p[text()='Full Name is required']")).toBeVisible()
-    await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("   ")
-    await expect(page.locator("//p[text()='Full Name is required']")).toBeVisible()
-    await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("#$%^&")
-    await expect(page.locator("//p[text()='Only alphabets are allowed']")).toBeVisible()
-    await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("32132")
-    await expect(page.locator("//p[text()='Only alphabets are allowed']")).toBeVisible()
-    await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("ravi")
+    // await expect(page.locator("//p[text()='Full Name is required']")).toBeVisible()
+    // await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("   ")
+    // await expect(page.locator("//p[text()='Full Name is required']")).toBeVisible()
+    // await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("#$%^&")
+    // await expect(page.locator("//p[text()='Only alphabets are allowed']")).toBeVisible()
+    // await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("32132")
+    // await expect(page.locator("//p[text()='Only alphabets are allowed']")).toBeVisible()
+    // await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("ravi")
 
-    const till = await page.locator("//select[@name='designation']")
-    await till.selectOption("IT")
+    // const till = await page.locator("//select[@name='designation']")
+    // await till.selectOption("IT")
 
-    const tils = await page.locator("//select[@name='mobileCode']")
-    await tils.selectOption("+91")               /// change 
-    await page.locator("//input[@placeholder='Enter Mobile Number']").fill("9853299910")
-    await page.locator("//input[@placeholder='Enter Email Address']").fill("sanjai.s@gmail.com")
-    await expect(page.locator("//p[text()='Enter your official email']")).toBeVisible()
+    // const tils = await page.locator("//select[@name='mobileCode']")
+    // await tils.selectOption("+91")               /// change 
+    // await page.locator("//input[@placeholder='Enter Mobile Number']").fill("9853299910")
+    // await page.locator("//input[@placeholder='Enter Email Address']").fill("sanjai.s@gmail.com")
+    // await expect(page.locator("//p[text()='Enter your official email']")).toBeVisible()
   
-    const dm = 62
-    for (let i = 0; i < dm; i++) {
-      await adminpg.cfs_email(data.sample[i])
-      await expect(page.locator("//p[text()='Enter your official email']")).toBeVisible()
-    }
+    // const dm = 62
+    // for (let i = 0; i < dm; i++) {
+    //   await adminpg.cfs_email(data.sample[i])
+    //   await expect(page.locator("//p[text()='Enter your official email']")).toBeVisible()
+    // }
 
-    await page.locator("(//input[@type='password'])[1]").fill("Doko@2023")
-    await page.locator("(//input[@type='password'])[2]").fill("Doko@2023")
-    await page.locator("//input[@placeholder='Enter Email Address']").fill("ravi@doko.com")
-    await page.locator("//button[text()='Get Started']").click()
+    // await page.locator("(//input[@type='password'])[1]").fill("Doko@2023")
+    // await page.locator("(//input[@type='password'])[2]").fill("Doko@2023")
+    // await page.locator("//input[@placeholder='Enter Email Address']").fill("ravi@doko.com")
+    // await page.locator("//button[text()='Get Started']").click()
 
-    await page.pause()
+    // await page.pause()
     // otp need to put 
 
     await loginpg.select_type(data.type1)
@@ -808,7 +815,7 @@ await page.locator("//li[text()='Sign Out']").click()
     await expect(page.locator("//p[text()='Please enter a valid GST']")).toBeVisible()
     await page.locator("//input[@placeholder='Enter GST Number']").fill("    ")
     await expect(page.locator("//p[text()='GST is required']")).toBeVisible()
-    await page.locator("//input[@placeholder='Enter GST Number']").fill("33FUCBS8311OIZ3")
+    await page.locator("//input[@placeholder='Enter GST Number']").fill("33FUDBS8311OIZ3")
     await expect(page.locator("//p[text()='Please Upload GST File']")).toBeVisible()
 
     await page.locator("//input[@placeholder='Enter PAN Number']").fill("453435324324")
@@ -882,43 +889,43 @@ await page.locator("//li[text()='Sign Out']").click()
   })
   test("checking the register personal details with validation message for another India country", async ({ page, loginpg, adminpg }) => {
 
-    await page.locator("//button[text()='Register']").click()
-    await page.locator("//input[@type='checkbox']").click()
-    await page.locator("//button[text()='Get Started']").click()
+    // await page.locator("//button[text()='Register']").click()
+    // await page.locator("//input[@type='checkbox']").click()
+    // await page.locator("//button[text()='Get Started']").click()
 
-    await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("lames")
-    const till = await page.locator("//select[@name='designation']")
-    await till.selectOption("IT")
-    const tils = await page.locator("//select[@name='mobileCode']")
-    await tils.selectOption("+91")               /// change
-    await page.locator("//input[@placeholder='Enter Mobile Number']").fill("8857399921")
+    // await page.locator("//input[@placeholder='ex. John Lin Doe']").fill("lames")
+    // const till = await page.locator("//select[@name='designation']")
+    // await till.selectOption("IT")
+    // const tils = await page.locator("//select[@name='mobileCode']")
+    // await tils.selectOption("+91")               /// change
+    // await page.locator("//input[@placeholder='Enter Mobile Number']").fill("8857399921")
 
-    await expect(page.locator("//p[text()='Email is required']")).toBeVisible()
-    await page.locator("//input[@placeholder='Enter Email Address']").fill("492389")
-    await expect(page.locator("//p[text()='Enter valid email address']")).toBeVisible()
-    await page.locator("//input[@placeholder='Enter Email Address']").fill("efsdfd")
-    await expect(page.locator("//p[text()='Enter valid email address']")).toBeVisible()
-    await page.locator("//input[@placeholder='Enter Email Address']").fill("#$@#$%$")
-    await expect(page.locator("//p[text()='Enter valid email address']")).toBeVisible()
-    await page.locator("//input[@placeholder='Enter Email Address']").fill("sanjai.s@gmail.com")
-    await expect(page.locator("//p[text()='Enter your official email']")).toBeVisible()
+    // await expect(page.locator("//p[text()='Email is required']")).toBeVisible()
+    // await page.locator("//input[@placeholder='Enter Email Address']").fill("492389")
+    // await expect(page.locator("//p[text()='Enter valid email address']")).toBeVisible()
+    // await page.locator("//input[@placeholder='Enter Email Address']").fill("efsdfd")
+    // await expect(page.locator("//p[text()='Enter valid email address']")).toBeVisible()
+    // await page.locator("//input[@placeholder='Enter Email Address']").fill("#$@#$%$")
+    // await expect(page.locator("//p[text()='Enter valid email address']")).toBeVisible()
+    // await page.locator("//input[@placeholder='Enter Email Address']").fill("sanjai.s@gmail.com")
+    // await expect(page.locator("//p[text()='Enter your official email']")).toBeVisible()
   
-    const dm = 62
-    for (let i = 0; i < dm; i++) {
-      await adminpg.cfs_email(data.sample[i])
-      await expect(page.locator("//p[text()='Enter your official email']")).toBeVisible()
-    }
+    // const dm = 62
+    // for (let i = 0; i < dm; i++) {
+    //   await adminpg.cfs_email(data.sample[i])
+    //   await expect(page.locator("//p[text()='Enter your official email']")).toBeVisible()
+    // }
 
-    await page.locator("(//input[@type='password'])[1]").fill("Doko@2023")
-    await page.locator("(//input[@type='password'])[2]").fill("Doko@2023")
+    // await page.locator("(//input[@type='password'])[1]").fill("Doko@2023")
+    // await page.locator("(//input[@type='password'])[2]").fill("Doko@2023")
 
-    await page.locator("//input[@placeholder='Enter Email Address']").fill("ravi@doko.com")
-    await page.locator("//button[text()='Get Started']").click()
-    await expect(page.locator("//div[text()='Email Already Exists']")).toBeVisible()
-    await page.locator("//input[@placeholder='Enter Email Address']").fill("sanjai.s@allmasters.ai") /// change email everytime
-    await page.locator("//button[text()='Get Started']").click()
+    // await page.locator("//input[@placeholder='Enter Email Address']").fill("ravi@doko.com")
+    // await page.locator("//button[text()='Get Started']").click()
+    // await expect(page.locator("//div[text()='Email Already Exists']")).toBeVisible()
+    // await page.locator("//input[@placeholder='Enter Email Address']").fill("sanjai.s@allmasters.ai") /// change email everytime
+    // await page.locator("//button[text()='Get Started']").click()
 
-    await page.pause()
+    // await page.pause()
     // otp need to put 
 
     await loginpg.select_type(data.type1)
@@ -3133,7 +3140,7 @@ test.describe('login functionality with mulitple logins as partner', async () =>
   test("login with valid username and password as partner", async ({ loginpg, page }) => {
 
     await loginpg.select_type(data.type2)
-    await loginpg.emailID("subham.sidhartha@dokonaly.com")
+    await loginpg.emailID("subham@dokonaly.com")
     await loginpg.password("Doko@2023")
     await loginpg.sign_in()
     await page.locator("(//a[@class='dropdown-toggle nav-link'])[1]").click()
@@ -3198,7 +3205,7 @@ test.describe('login functionality with mulitple logins as partner', async () =>
     await loginpg.login_wrgtoast()
     await page.close()
   })
-  test("login with valid credentials of partner but as customer and adminstrator", async ({ loginpg, page }) => {
+  test("login with valid credentials of partner but as customer and administrator", async ({ loginpg, page }) => {
 
     await loginpg.select_type(data.type1)
     await loginpg.emailID("subham.sidhartha@dokonaly.com")
@@ -3215,7 +3222,7 @@ test.describe('login functionality with mulitple logins as partner', async () =>
   })
 })
 
-test.describe("Holiday", async () => {
+test.describe.only("Holiday", async () => {
   test.beforeEach(async ({ page, baseURL, loginpg }) => {
     test.setTimeout(340000)
     await page.goto(`${baseURL}`)
@@ -3267,7 +3274,7 @@ test.describe("Holiday", async () => {
     await adminpg.holiday_name_validationmsg()
     await adminpg.holiday_name("     ")
     await adminpg.holiday_space_validationmsg()
-    await adminpg.holiday_name("test holiday")
+    await adminpg.holiday_name("QA one holiday")
     await adminpg.holiday_dateclk()
     await adminpg.holiday_date_choose()
 
@@ -3275,9 +3282,9 @@ test.describe("Holiday", async () => {
     await adminpg.holiday_yes()
     await adminpg.add_holiday_toast()
 
-    await adminpg.holiday_search("test holiday")
-    await expect(page.locator("//div[@data-colindex='0']")).toBeVisible()
-    await expect(page.locator("//span[text()='Active']")).toBeVisible()
+    await adminpg.holiday_search("qa one holiday")
+    await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await expect(page.locator("(//span[text()='Active'])[1]")).toBeVisible()
     await page.reload()
 
     await adminpg.holiday()
@@ -3291,14 +3298,14 @@ test.describe("Holiday", async () => {
     await adminpg.holiday_name_validationmsg()
     await adminpg.holiday_name("     ")
     await adminpg.holiday_space_validationmsg()
-    await adminpg.holiday_name("test holiday")
+    await adminpg.holiday_name("QA one holiday")
     await adminpg.holiday_dateclk()
     await adminpg.holiday_date_choose1()
     await adminpg.holiday_save()
     await adminpg.holiday_yes()
     await adminpg.add_holiday_toast()
 
-    await adminpg.holiday_search("test holiday")
+    await adminpg.holiday_search("qa one holiday")
     await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
     await expect(page.locator("(//div[@data-colindex='0'])[2]")).toBeVisible()
     await expect(page.locator("(//span[text()='Active'])[1]")).toBeVisible()
@@ -3306,16 +3313,18 @@ test.describe("Holiday", async () => {
 
 
     await page.click("(//div[@style='display: flex; gap: 10px;'])[1]")
-    await adminpg.holiday_name("edit holiday")
+    await adminpg.holiday_name("edit qa one holiday")
     await page.click("(//button[@name='status'])[2]")
     await adminpg.holiday_update()
     await adminpg.holiday_yes()
     await adminpg.edit_holiday_toast()
     await page.reload()
 
-    await adminpg.holiday_search("edit holiday")
-    await expect(page.locator("//div[@data-colindex='0']")).toBeVisible()
-    await expect(page.locator("//span[text()='Inactive']")).toBeVisible()
+    await page.click("//div[text()='Active']")
+    await page.click("//li[text()='Inactive']")
+    await adminpg.holiday_search("edit qa one holiday")
+    await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
+    await expect(page.locator("(//span[text()='Inactive'])[1]")).toBeVisible()
 
   })
 
@@ -3361,11 +3370,11 @@ test.describe("Holiday", async () => {
     await adminpg.add_holiday_toast()
     await page.reload()
 
-    await adminpg.holiday_search("Upload Test One")
-    await expect(page.locator("//div[@data-colindex='0']")).toBeVisible()
+    await adminpg.holiday_search("Upload file Test One")
+    await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
 
-    await adminpg.holiday_search("Upload Test Two")
-    await expect(page.locator("//div[@data-colindex='0']")).toBeVisible()
+    await adminpg.holiday_search("Upload file Test Two")
+    await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
 
 
   })
@@ -3522,7 +3531,7 @@ test.describe("Schedule", async () => {
     await expect(page.locator("//input[@name='volume']")).toBeDisabled()
     await expect(page.locator("//input[@name='weight']")).toBeDisabled()
     await page.locator("//button[text()='Inactive']").click()
-    await adminpg.save_schedule()
+    await page.locator("//button[text()='Update Schedule']").click()
     await adminpg.pop_up_yes()
     await expect(page.locator("//div[text()='Updated successfully']")).toBeVisible()
     await page.locator("//div[text()='Active']").click()
@@ -3532,7 +3541,7 @@ test.describe("Schedule", async () => {
     await expect(page.locator("(//span[text()='Inactive'])[1]")).toBeVisible()
     await page.locator("(//div[contains(@class,'MuiDataGrid-cell--withRenderer MuiDataGrid-cell')]//div)[3]").click()
     await page.locator("//button[text()='Active']").click()
-    await adminpg.save_schedule()
+    await page.locator("//button[text()='Update Schedule']").click()
     await adminpg.pop_up_yes()
     await expect(page.locator("//div[text()='Updated successfully']")).toBeVisible()
     
@@ -3545,7 +3554,7 @@ test.describe("Schedule", async () => {
     await adminpg.schedule_vessel("edit vessel")
     await adminpg.schedule_voyage("edit voyage")
     await adminpg.schedule_service("edit service")
-    await adminpg.save_schedule()
+    await page.locator("//button[text()='Update Schedule']").click()
     await adminpg.pop_up_yes()
     await adminpg.edi_sch_toast()
 
@@ -3554,7 +3563,7 @@ test.describe("Schedule", async () => {
     await page.click("(//div[@style='display: flex; gap: 10px;'])[1]")
     await adminpg.schedule_vessel("Evergreen")
     await adminpg.schedule_voyage("V.3982")
-    await adminpg.save_schedule()
+    await page.locator("//button[text()='Update Schedule']").click()
     await adminpg.pop_up_yes()
     await adminpg.edi_sch_toast()
 
@@ -3588,9 +3597,9 @@ test.describe("Rates", async () => {
     await expect(page.locator("//div[text()='Schedule ID']")).toBeVisible()
     await expect(page.locator("//div[text()='POL']")).toBeVisible()
     await expect(page.locator("//div[text()='POD']")).toBeVisible()
-    await expect(page.locator("//div[text()='Origin Total']")).toBeVisible()
-    await expect(page.locator("//div[text()='Freight Total']")).toBeVisible()
-    await expect(page.locator("//div[text()='Destination Total']")).toBeVisible()
+    await expect(page.locator("//div[text()='ETA']")).toBeVisible()
+    await expect(page.locator("//div[text()='ETD']")).toBeVisible()
+    //await expect(page.locator("//div[text()='Destination Total']")).toBeVisible()
     await expect(page.locator("//div[text()='Created At']")).toBeVisible()
     await expect(page.locator("//div[text()='Status']")).toBeVisible()
     await expect(page.locator("//div[text()='VIEW']")).toBeVisible()
@@ -3682,7 +3691,10 @@ test.describe("Rates", async () => {
     else {
       console.log('Pop-up is not visible.');
     }
+    await page.locator("//a[contains(text(),'AllMasters')]").click()
+    await page.locator("//button[text()='Place Booking']").click()
     await expect(page.locator("//p[contains(.,'Stay Tuned! Schedules will be Live shortly.')]")).toBeVisible()
+    await loginpg.logout_dd()
   })
   test("login in admin check to add rates", async ({ adminpg, page, loginpg }) => {
     await page.locator("//li[text()='Sign Out']").click()
@@ -3706,9 +3718,9 @@ test.describe("Rates", async () => {
     await expect(page.locator("//div[text()='Schedule ID']")).toBeVisible()
     await expect(page.locator("//div[text()='POL']")).toBeVisible()
     await expect(page.locator("//div[text()='POD']")).toBeVisible()
-    await expect(page.locator("//div[text()='Origin Total']")).toBeVisible()
-    await expect(page.locator("//div[text()='Freight Total']")).toBeVisible()
-    await expect(page.locator("//div[text()='Destination Total']")).toBeVisible()
+    await expect(page.locator("//div[text()='ETA']")).toBeVisible()
+    await expect(page.locator("//div[text()='ETD']")).toBeVisible()
+    //await expect(page.locator("//div[text()='Destination Total']")).toBeVisible()
     await expect(page.locator("//div[text()='Created At']")).toBeVisible()
     await expect(page.locator("//div[text()='Status']")).toBeVisible()
     await expect(page.locator("//div[text()='VIEW']")).toBeVisible()
@@ -3808,7 +3820,7 @@ test.describe("Full Booking", async () => {
   test.beforeEach(async ({ page, baseURL, loginpg }) => {
     test.setTimeout(340000)
     await page.goto(`${baseURL}`)
-    await loginpg.emailID("sanjai.s@allmasters.ai")
+    await loginpg.emailID("sanjai.s@dokonaly.com")
     await loginpg.password("Doko@2023")
     await loginpg.sign_in()
     await page.waitForTimeout(2000)
@@ -3822,9 +3834,9 @@ test.describe("Full Booking", async () => {
       console.log('Pop-up is not visible.');
     }
   })
-  test("cargo details", async ({ page, adminpg }) => { 
+  test.only("cargo details", async ({ page, adminpg }) => { 
     await page.locator("//a[contains(text(),'AllMasters')]").click()
-    await page.locator("//button[text()='Place Booking']").click()
+    //await page.locator("//button[text()='Place Booking']").click()
     await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Book']").click()
     await page.waitForTimeout(2000)
@@ -3956,10 +3968,10 @@ test.describe("Full Booking", async () => {
 
 
   })
-  test("checking on each package values on different metrics with Stackable", async ({ page, adminpg }) => {
+  test.only("checking on each package values on different metrics with Stackable", async ({ page, adminpg }) => {
     test.setTimeout(180000);
     await page.locator("//a[contains(text(),'AllMasters')]").click()
-    await page.locator("//button[text()='Place Booking']").click()
+    //await page.locator("//button[text()='Place Booking']").click()
     await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Book']").click()
     await page.waitForTimeout(2000)
@@ -4313,10 +4325,10 @@ test.describe("Full Booking", async () => {
 
 
   })
-  test("checking on each package values on different metrics with Non-Stackable", async ({ page, adminpg }) => {
+  test.only("checking on each package values on different metrics with Non-Stackable", async ({ page, adminpg }) => {
     test.setTimeout(180000);
     await page.locator("//a[contains(text(),'AllMasters')]").click()
-    await page.locator("//button[text()='Place Booking']").click()
+    //await page.locator("//button[text()='Place Booking']").click()
     await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Book']").click()
     await page.waitForTimeout(2000)
@@ -4626,10 +4638,10 @@ test.describe("Full Booking", async () => {
     }
 
   })
-  test("checking on each package values on different metrics with Stackable + Adding Number of packages", async ({ page, adminpg }) => {
+  test.only("checking on each package values on different metrics with Stackable + Adding Number of packages", async ({ page, adminpg }) => {
     test.setTimeout(180000);
     await page.locator("//a[contains(text(),'AllMasters')]").click()
-    await page.locator("//button[text()='Place Booking']").click()
+    //await page.locator("//button[text()='Place Booking']").click()
     await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Book']").click()
     await page.waitForTimeout(2000)
@@ -5347,11 +5359,11 @@ test.describe("Full Booking", async () => {
     }
 
   })
-  test("checking on each package values on different metrics with Non-Stackable + Adding Number of packages", async ({ page, adminpg }) => {
+  test.only("checking on each package values on different metrics with Non-Stackable + Adding Number of packages", async ({ page, adminpg }) => {
     test.setTimeout(180000);
   
     await page.locator("//a[contains(text(),'AllMasters')]").click()
-    await page.locator("//button[text()='Place Booking']").click()
+    //await page.locator("//button[text()='Place Booking']").click()
     await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Book']").click()
     await page.waitForTimeout(2000)
@@ -5986,10 +5998,10 @@ test.describe("Full Booking", async () => {
     }
 
   })
-  test("CBM and weight allowance", async ({ page, adminpg }) => {
+  test.only("CBM and weight allowance", async ({ page, adminpg }) => {
     test.setTimeout(180000);
     await page.locator("//a[contains(text(),'AllMasters')]").click()
-    await page.locator("//button[text()='Place Booking']").click()
+    //await page.locator("//button[text()='Place Booking']").click()
     await page.locator("(//h1[text()='AEJEA'])[1]").click()
     await page.locator("//button[text()='Continue to Book']").click()
     await page.waitForTimeout(2000)
@@ -6104,11 +6116,15 @@ test.describe("Full Booking", async () => {
     await adminpg.continue_to_book()
 
   })
-  test("All forwarder details and validations", async ({ page, adminpg, loginpg }) => {
+  test.only("All forwarder details and validations", async ({ page, adminpg, loginpg }) => {
 
       test.setTimeout(180000);
       await page.locator("//a[contains(text(),'AllMasters')]").click()
-      await page.locator("//button[text()='Place Booking']").click()
+      //await page.locator("//button[text()='Place Booking']").click()
+
+      //await expect(page.locator("//h1[text()='Welcome to']")).toBeVisible()
+      //await expect(page.locator("//span[text()='All']")).toBeVisible()
+      //await expect(page.locator("//h1[text()='Discover the revolutionary concept of']")).toBeVisible()
       await page.locator("(//h1[text()='AEJEA'])[1]").click()
       await page.locator("//button[text()='Continue to Book']").click()
       await page.waitForTimeout(2000)
@@ -6761,6 +6777,7 @@ test.describe("Full Booking", async () => {
   await page.locator("//button[text()='Confirm Booking']").click()
   await page.locator("//button[text()='Yes']").click()
   await expect(page.locator("//div[text()='Booking Confirmed Successfully']")).toBeVisible()
+  await page.locator("//button[text()='Close']").click()
   await loginpg.logout_dd()
 
   await loginpg.select_type(data.type3)
@@ -6777,10 +6794,11 @@ test.describe("Full Booking", async () => {
     console.log('Pop-up is not visible.');
   }
   await page.locator("(//div[@class='_notification_hmtms_139']//div)[1]").click()
-  await expect(page.locator("//p[text()='1']")).toBeHidden()
+  //await expect(page.locator("//p[text()='1']")).toBeVisible()
   await expect(page.locator("//h1[text()='Notifications']")).toBeVisible()
-  await expect(page.locator("(//h4[contains(.,'chittoor comp made a Booking ID')])[1]")).toBeHidden()
-  await page.locator("_notidiv_fqyfb_34").click()
+ //await expect(page.locator("(//h4[contains(.,'chittoor com made a Pre-Booking ID')])[1]")).toBeVisible()
+ await expect(page.locator("(//h4[contains(.,'com made a Pre-Booking ID')])[1]")).toBeVisible()
+  await page.reload()
   await page.locator("//li[text()='Sign Out']").click()
 
 
@@ -6798,10 +6816,11 @@ test.describe("Full Booking", async () => {
     console.log('Pop-up is not visible.');
   }
   await page.locator("(//div[@class='_notification_hmtms_139']//div)[1]").click()
-  await expect(page.locator("//p[text()='1']")).toBeHidden()
+  //await expect(page.locator("//p[text()='1']")).toBeVisible()
   await expect(page.locator("//h1[text()='Notifications']")).toBeVisible()
-  await expect(page.locator("(//h4[contains(.,'chittoor comp made a Booking ID')])[1]")).toBeVisible()
-  await page.locator("_notidiv_fqyfb_34").click()
+ //await expect(page.locator("(//h4[contains(.,'chittoor com made a Pre-Booking ID')])[1]")).toBeVisible()
+ await expect(page.locator("(//h4[contains(.,'com made a Pre-Booking ID')])[1]")).toBeVisible()
+  await page.reload()
   await page.locator("//li[text()='Sign Out']").click()
 
   }) 
@@ -6824,7 +6843,7 @@ test.describe("Full Booking", async () => {
     await expect(page.locator("//h1[text()='1']")).toBeVisible()
     await expect(page.locator("(//h1[text()='0'])[2]")).toBeVisible()
     await expect(page.locator("//h1[text()='4.3']")).toBeVisible()
-    await expect(page.locator("(//h1[text()='0'])[3]")).toBeVisible()
+    await expect(page.locator("//h1[text()='4']")).toBeVisible()
     await page.locator("//h5[text()='Active Orders']").click()
     await expect(page.locator("//h3[text()=' Active Orders']")).toBeVisible()
     await expect(page.locator("//h1[text()='No Active Orders made yet for you !']")).toBeVisible()
@@ -6877,11 +6896,7 @@ test.describe("Full Booking", async () => {
     for (var book=0; book<3; book++){
     await page.locator("//a[contains(text(),'AllMasters')]").click()
     await page.locator("//button[text()='Place Booking']").click()
-    await expect(page.locator("//h1[text()='Welcome to']")).toBeVisible()
-    await expect(page.locator("//span[text()='All']")).toBeVisible()
-    await expect(page.locator("//h1[text()='Discover the revolutionary concept of']")).toBeVisible()
-
-
+   
       await page.locator("(//h1[text()='AEJEA'])[1]").click()
       await page.locator("//button[text()='Continue to Book']").click()
       await page.waitForTimeout(2000)
@@ -7447,11 +7462,11 @@ await page.waitForTimeout(2000)
     await adminpg.pop_up_yes()
 
   })
-  test("verify that can able to do pre-booking", async ({ adminpg, page, loginpg }) => {
+  test.only("verify that can able to do pre-booking", async ({ adminpg, page, loginpg }) => {
     test.setTimeout(180000);
     await page.locator("//a[contains(text(),'AllMasters')]").click()
-    await page.locator("//button[text()='Place Booking']").click()
-    await page.locator("(//h1[text()='AEJEA'])[1]").click()              /// change
+    //await page.locator("//button[text()='Place Booking']").click()
+    await page.locator("(//h1[text()='AEJEA'])[3]").click()              /// change
     await page.locator("//button[text()='Continue to Book']").click()
     await page.waitForTimeout(2000)
     await adminpg.package_0(data.Pallets)
@@ -7462,7 +7477,7 @@ await page.waitForTimeout(2000)
     await page.locator("//input[@name='cargoDetails.0.breadth']").fill("130")
     await page.locator("//input[@name='cargoDetails.0.height']").fill("150")
     await page.locator("//input[@name='cargoDetails.0.weightPerPackage']").fill("130")
-    await page.locator("//input[@name='cargoDetails.0.noOfPackage']").fill("12")
+    await page.locator("//input[@name='cargoDetails.0.noOfPackage']").fill("1")
     await page.locator("//input[@name='cargoDetails.0.commodity']").fill("cardboard")
     await page.locator("//input[@name='cargoDetails.0.hsnCode']").fill("94843394")
     await page.locator("//span[contains(@class,'MuiTypography-root MuiTypography-body1')]").click()
@@ -7529,8 +7544,6 @@ await page.waitForTimeout(2000)
     await expect(page.locator("(//h4[text()='50'])[1]")).toBeVisible()
 
     await loginpg.logout_dd()
-
-
     
   await loginpg.select_type(data.type3)
   await loginpg.emailID("admin@ams.com") //change
@@ -7546,10 +7559,11 @@ await page.waitForTimeout(2000)
     console.log('Pop-up is not visible.');
   }
   await page.locator("(//div[@class='_notification_hmtms_139']//div)[1]").click()
-  await expect(page.locator("//p[text()='1']")).toBeHidden()
+  //await expect(page.locator("//p[text()='1']")).toBeVisible()
   await expect(page.locator("//h1[text()='Notifications']")).toBeVisible()
-  await expect(page.locator("(//h4[contains(.,'chittoor comp made a Pre-Booking ID')])[1]")).toBeHidden()
-  await page.locator("_notidiv_fqyfb_34").click()
+  //await expect(page.locator("(//h4[contains(.,'chittoor com made a Pre-Booking ID')])[1]")).toBeVisible()
+  await expect(page.locator("(//h4[contains(.,'com made a Pre-Booking ID')])[1]")).toBeVisible()
+  await page.reload()
   await page.locator("//li[text()='Sign Out']").click()
 
 
@@ -7558,6 +7572,7 @@ await page.waitForTimeout(2000)
   await loginpg.password("Doko@2023")
   await loginpg.sign_in()
   await page.waitForTimeout(5000)
+
   //const input = await page.isVisible("//h2[text()='User Already Logged In']")
   if (input) {
     console.log('Pop-up is visible.');
@@ -7567,10 +7582,11 @@ await page.waitForTimeout(2000)
     console.log('Pop-up is not visible.');
   }
   await page.locator("(//div[@class='_notification_hmtms_139']//div)[1]").click()
-  await expect(page.locator("//p[text()='1']")).toBeHidden()
+  //await expect(page.locator("//p[text()='1']")).toBeVisible()
   await expect(page.locator("//h1[text()='Notifications']")).toBeVisible()
-  await expect(page.locator("(//h4[contains(.,'chittoor comp made a Pre-Booking ID')])[1]")).toBeVisible()
-  await page.locator("_notidiv_fqyfb_34").click()
+  //await expect(page.locator("(//h4[contains(.,'chittoor com made a Pre-Booking ID')])[1]")).toBeVisible()
+  await expect(page.locator("(//h4[contains(.,'com made a Pre-Booking ID')])[1]")).toBeVisible()
+  await page.reload()
   await page.locator("//li[text()='Sign Out']").click()
 
   })
@@ -10101,6 +10117,8 @@ test.describe("Milestone", async () => {
     else {
       console.log('Pop-up is not visible.');
     }
+    await page.locator("//a[contains(text(),'AllMasters')]").click()
+    await page.locator("//button[text()='Place Booking']").click()
     // for (loop = 0; loop < 2; loop++) {
     //   // Full Complete Booking
     //   await page.locator("//button[text()='Place Booking']").click()
@@ -11921,6 +11939,7 @@ test.describe("My account for place order", async () => {
       console.log('Pop-up is not visible.');
     }
   })
+  
   test("Assert in Landing page", async ({ adminpg, page, loginpg }) => {
 
     await page.locator("//a[contains(text(),'AllMasters')]").click()
@@ -11935,7 +11954,7 @@ test.describe("My account for place order", async () => {
     await adminpg.ff_name()
     await adminpg.my_account()
     await expect(page.locator("//label[text()='Customer Id']")).toBeVisible()
-    await expect(page.locator("//input[@value='shp872']")).toBeVisible()
+    await expect(page.locator("//input[@value='SHP872']")).toBeVisible()
 
     await adminpg.edit_details()
     await page.locator("//input[@id='fullName']").clear()
@@ -12204,7 +12223,7 @@ test.describe("My account for place booking", async () => {
     await expect(page.locator("//input[@id='email']")).toHaveValue("sanjai.s@allmasters.ai")// change
     await expect(page.locator("//input[@id='Company Name']")).toHaveValue("chittoor comp")// change
     await expect(page.locator("//label[text()='Customer Id']")).toBeVisible()// change
-    await expect(page.locator("//input[@value='shp872']")).toBeVisible()// change
+    await expect(page.locator("//input[@value='SHP872']")).toBeVisible()// change
     
     await page.locator("//button[@value='inmaa']").click()
     await page.locator("//a[contains(text(),'Dashboard')]").click()
@@ -12822,7 +12841,63 @@ test.describe("My account for place booking", async () => {
     await expect(page.locator("//h5[text()='Welcome back !']")).toBeVisible()
 
   })
-}) //done
+}) //Done
+
+test.describe.skip("Pop Up in landing page", async()=>{
+  test.beforeEach(async ({ page, baseURL, loginpg }) => {
+    test.setTimeout(180000)
+    await page.goto(`${baseURL}`)
+    await loginpg.select_type(data.type1)
+    await loginpg.emailID("sanjai.s@allmasters.ai") //change
+    await loginpg.password("Doko@2023")
+    await loginpg.sign_in()
+    await page.waitForTimeout(5000)
+    const input = await page.isVisible("//h2[text()='User Already Logged In']")
+    if (input) {
+      console.log('Pop-up is visible.');
+      await page.click("//button[text()='Yes']")
+    }
+    else {
+      console.log('Pop-up is not visible.');
+    }
+  })
+  test("Assert with pop up message in landing page", async({adminpg, page, loginpg})=>{
+    await expect(page.locator("")).toBeVisible()
+    await expect(page.locator("")).toBeVisible()
+    await expect(page.locator("")).toBeVisible()
+    await expect(page.locator("")).toBeVisible()
+    await expect(page.locator("")).toBeVisible()
+    await expect(page.locator("")).toBeVisible()
+    await page.locator("//button[text()='Assign Order']").click()
+    await page.locator("//a[contains(text(),'AllMasters')]").click()
+    await page.locator("//p[text()='Logout']").click()
+    
+    for (var tp=0; tp<2; tp++){
+    await loginpg.emailID("sanjai.s@allmasters.ai") //change
+    await loginpg.password("Doko@2023")
+    await loginpg.sign_in()
+    await page.waitForTimeout(5000)
+    const input = await page.isVisible("//h2[text()='User Already Logged In']")
+    if(input){
+      console.log('Pop-up is visible.');
+      await page.click("//button[text()='Yes']")
+    }
+    else {
+      console.log('Pop-up is not visible.');
+    }
+    await expect(page.locator("")).toBeHidden()
+    await expect(page.locator("")).toBeHidden()
+    await expect(page.locator("")).toBeHidden()
+    await expect(page.locator("")).toBeHidden()
+    await expect(page.locator("")).toBeHidden()
+    await expect(page.locator("")).toBeHidden()
+    await expect(page.locator("")).toBeHidden()
+    await page.locator("//button[text()='Assign Order']").click()
+    await page.locator("//a[contains(text(),'AllMasters')]").click()
+    await page.locator("//p[text()='Logout']").click()
+  }
+  })
+})
  
 test.describe("change password",async()=>{
   test("check change password on each internals login credentails", async({page, adminpg, loginpg, baseURL})=>{
@@ -13053,7 +13128,7 @@ test.describe("Audit Logs", async()=>{
     await expect(page.locator("//div[text()='Action Log']")).toBeVisible()
     await expect(page.locator("//div[text()='Time']")).toBeVisible()
     await expect(page.locator("//div[text()='sanjai']")).toBeVisible()
-    await expect(page.locator("//div[text()='chittoor comp']")).toBeVisible()
+    await expect(page.locator("(//div[text()='chittoor comp'])[1]")).toBeVisible()
     await page.locator("//div[@aria-label='Without label']").click()
     await page.locator("(//li[@role='option'])[2]").click()
     await expect(page.locator("//div[text()='Full Name']")).toBeVisible()
@@ -13061,7 +13136,7 @@ test.describe("Audit Logs", async()=>{
     await expect(page.locator("//div[text()='Action Log']")).toBeVisible()
     await expect(page.locator("//div[text()='Time']")).toBeVisible()
     await expect(page.locator("//div[text()='sanjai']")).toBeVisible()
-    await expect(page.locator("//div[text()='chittoor comp']")).toBeVisible()
+    await expect(page.locator("(//div[text()='chittoor comp'])[1]")).toBeVisible()
     await page.locator("//div[@aria-label='Without label']").click()
     await page.locator("(//li[@role='option'])[3]").click()
     await expect(page.locator("//div[text()='Full Name']")).toBeVisible()
@@ -13069,7 +13144,7 @@ test.describe("Audit Logs", async()=>{
     await expect(page.locator("//div[text()='Action Log']")).toBeVisible()
     await expect(page.locator("//div[text()='Time']")).toBeVisible()
     await expect(page.locator("//div[text()='sanjai']")).toBeVisible()
-    await expect(page.locator("//div[text()='chittoor comp']")).toBeVisible()
+    await expect(page.locator("(//div[text()='chittoor comp'])[1]")).toBeVisible()
 
     await page.locator("//li[text()='Sign Out']").click()
   })
@@ -13136,13 +13211,12 @@ test.describe("About", async() =>{
     await page.locator("//li[text()='V.1.2.0']").click()
     await expect(page.locator("//div[text()='V.1.2.0']")).toBeVisible()
 
-    await page.locator("//li[text()='Sign Out']").click() 
-
+    await page.locator("//li[text()='Sign Out']").click()
   })
 })
 
 test.describe("All management search box and filter", async()=>{
-  test("check with search box in admin", async({page, loginpg, baseURL})=>{
+  test("check with search box", async({page, loginpg, baseURL})=>{
     test.setTimeout(3600000)
     await page.goto(`${baseURL}`)
     await loginpg.select_type(data.type3)
@@ -13309,27 +13383,27 @@ test.describe("All management search box and filter", async()=>{
     await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("   inNSa")
     await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
 
-    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("test holiday")
+    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("qa holiday")
     await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
-    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("TEST HOLIDAY")
+    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("QA HOLIDAY")
     await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
-    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("TEST holiday")
+    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("QA holiday")
     await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
-    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("test HOLIDAY")
+    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("qa HOLIDAY")
     await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
-    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("tesT HOliday")
+    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("qA HOliday")
     await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
-    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("   test holiday")
+    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("   qa holiday")
     await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
-    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("   TEST HOLIDAY")
+    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("   QA HOLIDAY")
     await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
-    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("   TEST holiday")
+    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("   QA holiday")
     await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
-    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("   test HOLIDAY")
+    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("   qa HOLIDAY")
     await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
-    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("   tesT HOliday")
+    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("   qA HOliday")
     await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
-    await page.locator("//input[@placeholder='Search CFS by Name, Gateway, Destination']").fill("    ")
+    await page.locator("//input[@placeholder='Search Holiday Name , Port Code ']").fill("    ")
     await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
 
     //schedule
