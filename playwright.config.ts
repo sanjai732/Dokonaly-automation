@@ -111,7 +111,7 @@ reporter:[["html",{open:"never"}]],
       name: 'firefox',
       use: {
         ...devices['Desktop Firefox'],
-        viewport:null
+        //viewport:null
       },
     },
 

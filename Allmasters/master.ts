@@ -3222,7 +3222,7 @@ test.describe('login functionality with mulitple logins as partner', async () =>
   })
 })
 
-test.describe.only("Holiday", async () => {
+test.describe("Holiday", async () => {
   test.beforeEach(async ({ page, baseURL, loginpg }) => {
     test.setTimeout(340000)
     await page.goto(`${baseURL}`)
@@ -3241,7 +3241,7 @@ test.describe.only("Holiday", async () => {
     }
   })
 
-  test("Check validation & add holiday and search with holiday name", async ({ adminpg, page }) => {
+  test.only("Check validation & add holiday and search with holiday name", async ({ adminpg, page }) => {
     /*await adminpg.holiday()
     await adminpg.holiday_add()
     await adminpg.holiday_save()
@@ -3328,7 +3328,7 @@ test.describe.only("Holiday", async () => {
 
   })
 
-  test("Upload different types of data in Xls file and check validation and search also", async ({ adminpg, page }) => {
+  test.only("Upload different types of data in Xls file and check validation and search also", async ({ adminpg, page }) => {
 
     await adminpg.holiday()
     await adminpg.holiday_upload("data-files/Works.docx")
