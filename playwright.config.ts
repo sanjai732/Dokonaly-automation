@@ -86,8 +86,6 @@ const config: PlaywrightTestConfig = {
   use: {
     headless:false,
     launchOptions: {
-      // 1
-      args: ["--start-maximized"],
     },
 //baseURL:"http://dev.cn.dokonaly.com/",
 baseURL:"http://qa.ams.ai/user/of/dashboard",
@@ -102,8 +100,8 @@ reporter:[["html",{open:"never"}]],
     {
       name: 'chromium',
       use: {
-      //  ...devices['Desktop Chrome'],
-        viewport: null,
+        ...devices['Desktop Chrome'],
+        viewport: {width:1280,height:720},
       },
     },
 

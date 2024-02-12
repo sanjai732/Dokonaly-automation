@@ -571,6 +571,9 @@ export default class{
        async Ch_comp(s:string){
               await this.page.locator("//input[@name='OCOMMR']").fill(s)
        }
+       async competition_rate(s:string){
+              await this.page.locator("//input[@name='CR']").fill(s)
+       }
        async rates_confirm(){
               await this.page.locator("//button[text()='Confirm']").click()
        }
@@ -651,12 +654,12 @@ export default class{
        async holiday_date_choose(){
               await this.page.locator("//button[@title='Next month']").click()
               await this.page.waitForTimeout(1000)
-              await this.page.locator("//button[text()='24']").click()
+              await this.page.locator("//button[text()='20']").click()
        }
        async holiday_date_choose1(){
               await this.page.locator("//button[@title='Next month']").click()
               await this.page.waitForTimeout(1000)
-              await this.page.locator("//button[text()='23']").click()
+              await this.page.locator("//button[text()='19']").click()
        }
        async asser_holiday(){
               await expect(this.page.locator("div[data-colindex='1']")).toBeVisible()
@@ -1299,7 +1302,7 @@ async fflogin_mile (){
 
     
 }
- async otlogin_mile (){
+async otlogin_mile (){
        const type = await this.page.locator("//select[@type='number']")
        await type.selectOption("I am an Administrator")
        await this.page.locator("//input[@id='InputEmail1']").fill("ot@ams.com")
@@ -1386,7 +1389,7 @@ async destpartner_mile(){
        else {
         console.log('Pop-up is not visible.');
        }
-       await this.page.locator("(//button[@type='button'])[2]").click()   
+       await this.page.locator("(//button[@type='button'])[2]").click()  
        await this.page.locator("(//input[@role='combobox'])[1]").fill("innsa")
        await this.page.keyboard.press('ArrowDown');
        await this.page.keyboard.press('Enter');          // will change
@@ -1443,7 +1446,7 @@ async fftwologin_mile (){
 
     
 }
- async ottwologin_mile (){
+async ottwologin_mile (){
        const type = await this.page.locator("//select[@type='number']")
        await type.selectOption("I am an Administrator")
        await this.page.locator("//input[@id='InputEmail1']").fill("ot@ams.com")
@@ -1477,7 +1480,7 @@ async fftwologin_mile (){
        await this.page.locator("//button[text()='16']").click()               //change
 
        await this.page.locator("//button[text()='Apply Filters']").click()  
-       await this.page.locator("(//button[text()='View'])[1]").click()       //change
+       await this.page.locator("(//button[text()='View'])[1]").click() //change     
        await this.page.locator("(//button[text()='View Info'])[2]").click()  //change
     
 }
@@ -1531,7 +1534,7 @@ async desttwopartner_mile(){
        else {
         console.log('Pop-up is not visible.');
        }
-       await this.page.locator("(//button[@type='button'])[2]").click()   
+       await this.page.locator("(//button[@type='button'])[2]").press('Enter')   
        await this.page.locator("(//input[@role='combobox'])[1]").fill("innsa")
        await this.page.keyboard.press('ArrowDown');
        await this.page.keyboard.press('Enter');          // will change
@@ -1588,7 +1591,7 @@ async ffthreelogin_mile (){
 
     
 }
- async otthreelogin_mile (){
+async otthreelogin_mile (){
        const type = await this.page.locator("//select[@type='number']")
        await type.selectOption("I am an Administrator")
        await this.page.locator("//input[@id='InputEmail1']").fill("ot@ams.com")
@@ -1806,8 +1809,8 @@ async destfourpartner_mile(){
        await type.selectOption("I am a Partner")
        await this.page.locator("//input[@id='InputEmail1']").fill("balaji.rr@dokonaly.com  ")
        await this.page.locator("//input[@id='InputPassword1']").fill("Doko@2023")
-       await this.page.click("//button[@id='Signin']")
-       //await this.page.keyboard.press('Enter')
+      // await this.page.click("//button[@id='Signin']")
+       await this.page.keyboard.press('Enter')
 
        await this.page.waitForTimeout(2000);
        const listen = await this.page.isVisible("//p[text()='The user is already logged in, do you want to log out all users?']")
@@ -1819,7 +1822,7 @@ async destfourpartner_mile(){
        else {
         console.log('Pop-up is not visible.');
        }
-       await this.page.locator("(//button[@type='button'])[2]").click()   
+       await this.page.locator("(//button[@type='button'])[2]").press('Enter')   
        await this.page.locator("(//input[@role='combobox'])[1]").fill("innsa")
        await this.page.keyboard.press('ArrowDown');
        await this.page.keyboard.press('Enter');          // will change
@@ -1834,37 +1837,42 @@ async destfourpartner_mile(){
        await this.page.locator("(//button[text()='View Info'])[4]").click()
 
 }
-     async fileupload(){
-       await this.page.locator("//input[@id='file']").setInputFiles("data-files/Gst.pdf")
-    //   await this.page.click("(//div[@class='_filediv_vtv8j_105']//span)[2]")         /////// file view
-      
-       await this.page.click("._fileContainer_boizn_39 > svg")
-       await this.page.locator("//input[@id='file']").setInputFiles("data-files/Gst.pdf")
-       await this.page.click("._fileContainer_boizn_39 > svg")
-
-       await this.page.locator("//input[@id='file']").setInputFiles("data-files/fivemb.pdf")
-       await this.page.waitForTimeout(3000)
-       await this.page.click("._fileContainer_boizn_39 > svg")
+async fileupload(){
+ 
        //10 mb
-       await this.page.locator("//input[@id='file']").setInputFiles("data-files/tenmb.pdf")
-       await this.page.waitForTimeout(3000)
+       await this.page.locator("//div[@id='currentStep']//button[1]").click() 
+       await this.page.locator("//input[@id='file']").setInputFiles("data-files/10 mb file.pdf")
+       await this.page.waitForTimeout(2000)
        await expect(this.page.locator("//p[text()='File size should not be more than 5 MB']")).toBeVisible()
+       await this.page.reload()
+       await this.page.locator("//div[@id='currentStep']//button[1]").click() 
        
-       // xls file
-       await this.page.locator("//input[@id='file']").setInputFiles("data-files/destination.xls")
-       await this.page.waitForTimeout(3000)
+       // xls file   
+       await this.page.locator("//input[@id='file']").setInputFiles("data-files/destination (2).xls")
+       await this.page.waitForTimeout(1000)
        await expect(this.page.locator("//p[text()='Upload only PDF']")).toBeVisible()
+       await this.page.reload()
+       await this.page.locator("//div[@id='currentStep']//button[1]").click() 
        
        // word file
        await this.page.locator("//input[@id='file']").setInputFiles("data-files/Works.docx")
-       await this.page.waitForTimeout(3000)
+       await this.page.waitForTimeout(1000)
        await expect(this.page.locator("//p[text()='Upload only PDF']")).toBeVisible()
+       await this.page.reload()
+       await this.page.locator("//div[@id='currentStep']//button[1]").click() 
        
        // image
        await this.page.locator("//input[@id='file']").setInputFiles("data-files/sample.png")
-       await this.page.waitForTimeout(3000)
+       await this.page.waitForTimeout(1000)
        await expect(this.page.locator("//p[text()='Upload only PDF']")).toBeVisible()
+       await this.page.reload()
+       await this.page.locator("//div[@id='currentStep']//button[1]").click() 
        
+       await this.page.locator("//input[@id='file']").setInputFiles("data-files/fivemb.pdf")
+       await this.page.waitForTimeout(3000)
+       await expect(this.page.locator("//p[text()='File size should not be more than 5 MB']")).toBeHidden()
+       await this.page.reload()
+
 
 }
 

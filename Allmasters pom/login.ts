@@ -42,8 +42,8 @@ import {Page, expect} from "@playwright/test";
         
         await this.page.locator("//li[text()='Sign Out']").click()
     }
-    async logout_mile(){
-        await this.page.locator("(//a[@class='dropdown-toggle nav-link'])[2]").click()
+    async logout_mile(){//
+        await this.page.locator("(//a[@class='dropdown-toggle nav-link'])[1]").click()
         await this.page.locator("//a[contains(text(),'Logout')]").click()
     }
     async logout_orimile(){
