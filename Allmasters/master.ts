@@ -1,17 +1,23 @@
 import { test, expect } from '../Allmaster pom_fixture/all_pom_fixture'
 import * as data from "../Allmaster data/Datas.json"
+
 /*
 clear cache before start 
 mark all as read in notification
 check with email id, details for customer in db
 partner mail id 
 logout from all valid mail id like admin, ot, partner and customer
-there should be no schedule
-change the date in holiday excel
+there should be no schedule as active
+change the date in holiday excel, adding by button in holiday, schedule, user management 
 change in admin_man.ts for milestone process check with date
 change in master.ts for updating ETD and ETA date
 inactive the schedule in db
 change holiday date
+
+after automation manual test on upload holiday excel sheet 
+**after uploaded excel sheet check whether date is binded or not**
+
+
 */
 test.describe.skip("Country", async () => {
 
@@ -273,7 +279,8 @@ test.describe.skip("Country", async () => {
     await adminpg.search_country("united states of america")
     await adminpg.search_country_one()
   })
-})//done
+})//done  extra one test case is there so 
+//DON"T DELETE
 
 test.describe("Register personal details", async () => {
   test.beforeEach(async ({ baseURL, page }) => {
@@ -318,8 +325,9 @@ test.describe("Register personal details", async () => {
     await expect(page.locator("//h1[text()='Notifications']")).toBeVisible()
     await expect(page.locator("//button[text()='Mark as all read']")).toBeVisible()
     await expect(page.locator("//button[text()='Next']")).toBeVisible()
-    await expect(page.locator("_notidiv_fqyfb_34")).toBeVisible()
+    await expect(page.locator("(//*[name()='svg'][@type='button'])[1]")).toBeVisible()
     await expect(page.locator("(//h4[contains(.,'user made a registration without completing KYC page')])[1]")).toBeVisible()
+    await page.locator("(//h4[contains(.,'user made a registration without completing KYC page')])[1]").click()
     await page.locator("//button[text()='Next']").click()
     await page.locator("//button[text()='Previous']").click()
     await page.reload()
@@ -343,8 +351,9 @@ test.describe("Register personal details", async () => {
     await expect(page.locator("//h1[text()='Notifications']")).toBeVisible()
     await expect(page.locator("//button[text()='Mark as all read']")).toBeVisible()
     await expect(page.locator("//button[text()='Next']")).toBeVisible()
-    await expect(page.locator("_notidiv_fqyfb_34")).toBeVisible()
+    await expect(page.locator("(//*[name()='svg'][@type='button'])[1]")).toBeVisible()
     await expect(page.locator("(//h4[contains(.,'user made a registration without completing KYC page')])[1]")).toBeVisible()
+    await page.locator("(//h4[contains(.,'user made a registration without completing KYC page')])[1]").click()
     await page.locator("//button[text()='Next']").click()
     await page.locator("//button[text()='Previous']").click()
     await page.reload()
@@ -364,11 +373,11 @@ test.describe("Register personal details", async () => {
       console.log('Pop-up is not visible.');
     }
     await page.locator("(//div[@class='_notification_hmtms_139']//div)[1]").click()
-    await expect(page.locator("//p[text()='1']")).toBeVisible()
+    await expect(page.locator("//p[text()='1']")).toBeHidden()
     await expect(page.locator("//h1[text()='Notifications']")).toBeVisible()
-    await expect(page.locator("//button[text()='Mark as all read']")).toBeVisible()
+    await expect(page.locator("//button[text()='Mark as all read']")).toBeHidden()
     await expect(page.locator("//button[text()='Next']")).toBeVisible()
-    await expect(page.locator("_notidiv_fqyfb_34")).toBeVisible()
+    await expect(page.locator("(//*[name()='svg'][@type='button'])[1]")).toBeVisible()
     await expect(page.locator("(//h4[contains(.,'user made a registration without completing KYC page')])[1]")).toBeHidden()
     await page.locator("//button[text()='Next']").click()
     await page.locator("//button[text()='Previous']").click()
@@ -478,6 +487,7 @@ test.describe("Register personal details", async () => {
     await expect(page.locator("//p[text()='1']")).toBeVisible()
     await expect(page.locator("//h1[text()='Notifications']")).toBeVisible()
     await expect(page.locator("(//h4[contains(.,'made a new registration by completing KYC page')])[1]")).toBeVisible()
+    await page.locator("(//h4[contains(.,'made a new registration by completing KYC page')])[1]").click()
     await page.reload()
     await page.locator("//li[text()='Sign Out']").click()
 
@@ -519,7 +529,6 @@ test.describe("Register personal details", async () => {
     await expect(page.locator("//p[text()='1']")).toBeHidden()
     await expect(page.locator("//h1[text()='Notifications']")).toBeVisible()
     await expect(page.locator("//h4[contains(.,'made a new registration by completing KYC page')]")).toBeHidden()
-    await expect(page.locator("//h4[contains(.,'user made a registration without completing KYC page')]")).toBeHidden()
     await page.reload()
     await page.locator("//li[text()='Sign Out']").click()
 
@@ -1056,7 +1065,7 @@ test.describe("user management", async () => {
   })
   test("checking with all assertions and approve one user", async ({ adminpg, loginpg, page }) => {
 
-    await page.locator("//p[text()='Registration']").click()
+   await page.locator("//p[text()='Registration']").click()
     await page.locator("//p[text()='New']").click()
     await adminpg.new_reg_assert()
     await expect(page.locator("//div[text()='COMPANY NAME']")).toBeVisible()
@@ -1074,7 +1083,6 @@ test.describe("user management", async () => {
     await page.locator("//div[text()='sanjai.s@allmasters.ai']").click()// update mail id //div[text()='sanjai.s@allmaters.ai']
 
     await adminpg.assert_user()
-
     await page.locator("//button[text()='View History']").click()
     await expect(page.locator("//h2[text()='View History']")).toBeVisible()
     await expect(page.locator("//h5[text()='Looks empty']")).toBeVisible()
@@ -1147,13 +1155,12 @@ test.describe("user management", async () => {
     await expect(page.locator("//h5[text()='Verification']")).toBeVisible()
     await expect(page.locator("//h6[text()='takes upto 24 hrs']")).toBeVisible()
     await expect(page.locator("//p[contains(.,'Since all your docs will be manually verified by our Team')]")).toBeVisible()
-    await page.locator("//button[text()='Back to Login']").click()
-
+    await page.locator("//button[text()='Back to Login']").click() 
     await loginpg.select_type(data.type3)
     await loginpg.emailID("obt@ams.com") //change
     await loginpg.password("Doko@2023")
     await loginpg.sign_in()
-
+    
     await page.locator("//p[text()='Registration']").click()
     await page.locator("//p[text()='New']").click()
     await adminpg.new_reg_assert()
@@ -1907,7 +1914,7 @@ test.describe("user management", async () => {
     await page.locator("//button[text()='Yes']").click()
     await page.locator("//li[text()='Sign Out']").click()
   })
-})//Done
+})
 
 test.describe("login funtionality", async () => {
   test.beforeEach(async ({ baseURL, page }) => {
@@ -1922,7 +1929,6 @@ test.describe("login funtionality", async () => {
 
       await loginpg.sign_in()
       await loginpg.logout_dd()
-      //await page.locator("//p[text()='Logout']").click()
       await page.close()
     })
     test("login with Invalid username and valid password as customer", async ({ loginpg, page }) => {
@@ -2099,7 +2105,7 @@ test.describe("login funtionality", async () => {
     await loginpg.password_toast()
     await page.close()
   })
-})//done
+})
 
 test.describe("Forgot password", async () => {
   test.beforeEach(async ({ baseURL, page }) => {
@@ -2206,7 +2212,7 @@ test.describe("Forgot password", async () => {
 
   })
 
-})//done
+})
 
 test.describe.skip("Country", async () => {
 
@@ -2447,7 +2453,7 @@ test.describe.skip("Country", async () => {
     await adminpg.search_country("united states of america")
     await adminpg.search_country_one()
   })
-})//done
+})
 
 test.describe.skip("Lane Management", async () => {
   // port code is unique
@@ -2660,7 +2666,7 @@ test.describe.skip("Lane Management", async () => {
     await adminpg.lane_search(data.ano_portname)
     await adminpg.search_lane_one()
   })
-})//done
+})
 
 test.describe.skip("Cost Heading Management", async () => {
 
@@ -2789,7 +2795,7 @@ test.describe.skip("Cost Heading Management", async () => {
     await adminpg.cost_norows()
 
   })
-})//done 
+})
 
 test.describe.skip("Cfs Management", async () => {
   test.beforeEach(async ({ page, baseURL, loginpg }) => {
@@ -3212,13 +3218,13 @@ test.describe('login functionality with mulitple logins as partner', async () =>
   test("login with valid credentials of partner but as customer and administrator", async ({ loginpg, page }) => {
 
     await loginpg.select_type(data.type1)
-    await loginpg.emailID("subham.sidhartha@dokonaly.com")
+    await loginpg.emailID("balaji.rr@dokonaly.com")
     await loginpg.password("Doko@2023")
     await loginpg.sign_in()
     await loginpg.login_wrgtoast()
     await page.reload()
     await loginpg.select_type(data.type3)
-    await loginpg.emailID("subham.sidhartha@dokonaly.com")
+    await loginpg.emailID("balaji.rr@dokonaly.com")
     await loginpg.password("Doko@2023")
     await loginpg.sign_in()
     await loginpg.login_wrgtoast()
@@ -3484,19 +3490,13 @@ test.describe("Schedule", async () => {
     await page.locator("(//button[@aria-label='Choose date'])[3]").click()
     await page.locator("//button[@title='Next month']").click()
     await page.waitForTimeout(2000)
-    await page.locator("//button[text()='16']").click()
+    await page.locator("//button[text()='21']").click()
 
     await page.waitForTimeout(1000)
     await page.locator("(//button[@aria-label='Choose date'])[3]").click()
     await page.locator("//button[@title='Next month']").click()
     await page.waitForTimeout(2000)
-    await page.locator("//button[text()='8']").click()
-
-    await page.waitForTimeout(1000)
-    await page.locator("(//button[@aria-label='Choose date'])[3]").click()
-    await page.locator("//button[@title='Next month']").click()
-    await page.waitForTimeout(2000)
-    await page.locator("//button[text()='11']").click()
+    await page.locator("//button[text()='18']").click()
 
     await page.waitForTimeout(1000)
     await page.locator("(//button[@aria-label='Choose date'])[3]").click()
@@ -3508,7 +3508,13 @@ test.describe("Schedule", async () => {
     await page.locator("(//button[@aria-label='Choose date'])[3]").click()
     await page.locator("//button[@title='Next month']").click()
     await page.waitForTimeout(2000)
-    await page.locator("//button[text()='25']").click()
+    await page.locator("//button[text()='27']").click()
+
+    await page.waitForTimeout(1000)
+    await page.locator("(//button[@aria-label='Choose date'])[3]").click()
+    await page.locator("//button[@title='Next month']").click()
+    await page.waitForTimeout(2000)
+    await page.locator("//button[text()='29']").click()
 
     await adminpg.sch_oricfsname("mumbai")
     await adminpg.sch_oricfsbranch("branch 1")
@@ -3535,7 +3541,7 @@ test.describe("Schedule", async () => {
     await expect(page.locator("//input[@name='volume']")).toBeDisabled()
     await expect(page.locator("//input[@name='weight']")).toBeDisabled()
     await page.locator("//button[text()='Inactive']").click()
-    await page.locator("//button[text()='Update Schedule']").click()
+    await page.locator("//button[text()='Save Schedule']").click()
     await adminpg.pop_up_yes()
     await expect(page.locator("//div[text()='Updated successfully']")).toBeVisible()
     await page.locator("//div[text()='Active']").click()
@@ -3545,7 +3551,7 @@ test.describe("Schedule", async () => {
     await expect(page.locator("(//span[text()='Inactive'])[1]")).toBeVisible()
     await page.locator("(//div[contains(@class,'MuiDataGrid-cell--withRenderer MuiDataGrid-cell')]//div)[3]").click()
     await page.locator("//button[text()='Active']").click()
-    await page.locator("//button[text()='Update Schedule']").click()
+    await page.locator("//button[text()='Save Schedule']").click()
     await adminpg.pop_up_yes()
     await expect(page.locator("//div[text()='Updated successfully']")).toBeVisible()
 
@@ -3558,7 +3564,7 @@ test.describe("Schedule", async () => {
     await adminpg.schedule_vessel("edit vessel")
     await adminpg.schedule_voyage("edit voyage")
     await adminpg.schedule_service("edit service")
-    await page.locator("//button[text()='Update Schedule']").click()
+    await page.locator("//button[text()='Save Schedule']").click()
     await adminpg.pop_up_yes()
     await adminpg.edi_sch_toast()
 
@@ -3567,7 +3573,8 @@ test.describe("Schedule", async () => {
     await page.click("(//div[@style='display: flex; gap: 10px;'])[1]")
     await adminpg.schedule_vessel("Evergreen")
     await adminpg.schedule_voyage("V.3982")
-    await page.locator("//button[text()='Update Schedule']").click()
+    await adminpg.schedule_service("IEMS")
+    await page.locator("//button[text()='Save Schedule']").click()
     await adminpg.pop_up_yes()
     await adminpg.edi_sch_toast()
 
@@ -6314,7 +6321,7 @@ test.describe("Full Booking", async () => {
     await page.locator("//input[@placeholder='Enter Driver Name']").fill("34234")
     await adminpg.continue_to_book()
     await page.locator("//button[text()='Back']").click()
-    /*
+    
     await page.locator("//input[@placeholder='Enter CHA Name']").fill("#$%^&")
     await page.locator("//input[@placeholder='Enter CHA License Number']").fill("$%^&*")
     await page.locator("//input[@placeholder='Enter Truck Number ']").fill("$%^&")
@@ -6328,7 +6335,7 @@ test.describe("Full Booking", async () => {
     await page.locator("//input[@placeholder='Enter Driver Name']").fill("   ")
     await adminpg.continue_to_book()
     await page.locator("//button[text()='Back']").click()
-    */
+    
     await page.locator("//input[@placeholder='Enter CHA Name']").fill("JDU3982")
     await page.locator("//input[@placeholder='Enter Truck Number ']").fill("TN 30 AQ 9013")
     await page.locator("//input[@placeholder='Enter CHA License Number']").fill("MCfsJDojs382")
@@ -6847,7 +6854,7 @@ test.describe("Full Booking", async () => {
     await expect(page.locator("//h2[text()='Experience Warehouse to Warehouse Controllidation like never before!']")).toBeVisible()
     await page.locator("//button[@value='inmaa']").click()
     await expect(page.locator("//p[contains(.,'Stay Tuned! Schedules will be Live shortly.')]")).toBeVisible()
-    await expect(page.locator("//h5[text()='2023 ,Groupage technologies (s) pte.ltd.All Rights Reserved']")).toBeVisible()
+    await expect(page.locator("//h5[text()='2024 ,Groupage technologies (s) pte.ltd.All Rights Reserved']")).toBeVisible()
     // numbers in dashboard screen
     await expect(page.locator("(//h1[text()='0'])[1]")).toBeVisible()
     await expect(page.locator("//h1[text()='1']")).toBeVisible()
@@ -6898,12 +6905,10 @@ test.describe("Full Booking", async () => {
     await page.locator("//a[contains(text(),'Dashboard')]").click()
 
 
-
-
   })
   test("Fast booking", async ({ page, adminpg }) => {
     test.setTimeout(480000);
-    for (var book = 0; book < 4; book++) {
+    for (var book = 0; book < 5; book++) {
       await page.locator("//a[contains(text(),'AllMasters')]").click()
       await page.locator("//button[text()='Place Booking']").click()
 
@@ -12215,7 +12220,7 @@ test.describe("My account for place order", async () => {
     await expect(page.locator("//h5[text()='Welcome back !']")).toBeVisible()
 
   })
-}) //Done 
+}) 
 
 test.describe("My account for place booking", async () => {
   test.beforeEach(async ({ page, baseURL, loginpg }) => {
@@ -12887,7 +12892,7 @@ test.describe("My account for place booking", async () => {
     await expect(page.locator("//h5[text()='Welcome back !']")).toBeVisible()
 
   })
-}) //Done
+}) 
 
 test.describe.skip("Pop Up in landing page", async () => {
   test.beforeEach(async ({ page, baseURL, loginpg }) => {
@@ -13866,3 +13871,4 @@ test.describe("All management search box and filter", async () => {
     await expect(page.locator("(//div[@data-colindex='0'])[1]")).toBeVisible()
   })
 })
+
